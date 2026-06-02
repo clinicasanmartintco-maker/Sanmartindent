@@ -65,6 +65,38 @@ If no photo is available yet, replace `<img>` with `<i class="fas fa-user-doctor
 
 Duplicate a `.service__card` block inside `.services__grid`. Only one card should carry `.service__card--featured` (the visually elevated center card). Update the `wa.me` link text to match the service name.
 
+## SEO — objetivo principal
+
+El posicionamiento en Google es una prioridad del proyecto. Cada encabezado (`h1`–`h3`) debe incluir palabras clave reales que los pacientes de Temuco y La Araucanía buscan.
+
+### Palabras clave objetivo (por intención de búsqueda)
+
+| Intención | Palabras clave |
+|---|---|
+| Servicio + ciudad | "dentista Temuco", "clínica dental Temuco", "odontólogo Temuco" |
+| Servicio específico | "implantes dentales Temuco", "diseño de sonrisa Temuco", "blanqueamiento dental Temuco" |
+| Urgencia / precio | "dentista urgencia Temuco", "dentista económico Temuco", "hora dental Temuco" |
+| Segmento adultos | "dentista adultos mayores Temuco", "prótesis dental Temuco", "rehabilitación oral Temuco" |
+| Zona | "dentista Avenida San Martín", "dentista La Araucanía" |
+
+### Reglas de aplicación
+
+- El `<h1>` de `index.html` debe contener "dentista Temuco" o "clínica dental Temuco" de forma natural.
+- Cada sección (`#servicios`, `#nosotros`, `#contacto`) debe tener un `<h2>` con al menos una palabra clave de la tabla.
+- Las cards de servicios usan `<h3>`: incluir siempre "Temuco" o la especialidad explícita.
+- El atributo `<title>` y `<meta name="description">` de cada página deben incluir las palabras clave primarias + "Temuco".
+- No forzar keywords — el texto debe sonar natural en español chileno.
+- `equipo.html`: los `<h2>` y `<h3>` deben mencionar "dentistas Temuco" o "equipo odontológico Temuco".
+
+### Meta tags mínimos requeridos en cada página
+
+```html
+<title>Clínica Dental Temuco | San Martin Dent</title>
+<meta name="description" content="Dentistas en Temuco especializados en implantes dentales, diseño de sonrisa y odontología integral. Agenda tu hora por WhatsApp.">
+<meta name="keywords" content="dentista Temuco, clínica dental Temuco, implantes dentales Temuco, diseño de sonrisa Temuco">
+<link rel="canonical" href="https://sanmartindent.cl/">
+```
+
 ## Language
 
 All user-facing text is in **Spanish (Chile)**. Keep it that way for any new copy.
