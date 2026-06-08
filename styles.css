@@ -194,6 +194,7 @@ ul { list-style: none; }
     width: 5.5rem;
     height: 5.5rem;
     object-fit: contain;
+    border-radius: var(--radius);
 }
 .implant-svg, .bracket-svg {
     width: 2rem;
