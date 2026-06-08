@@ -190,8 +190,13 @@ ul { list-style: none; }
     transition: all var(--transition);
     box-shadow: 0 0 16px rgba(241,159,5,0.15);
 }
-.implant-svg {
+.implant-svg, .bracket-svg {
     width: 2rem;
+    height: auto;
+    color: var(--accent);
+}
+.smile-design-svg {
+    width: 2.6rem;
     height: auto;
     color: var(--accent);
 }
