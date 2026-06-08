@@ -190,6 +190,12 @@ ul { list-style: none; }
     transition: all var(--transition);
     box-shadow: 0 0 16px rgba(241,159,5,0.15);
 }
+.service__icon--endo i {
+    background: linear-gradient(to bottom, var(--accent) 45%, #d95f5f 45%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 .service__card:hover .service__icon {
     background: rgba(241,159,5,0.2);
     border-color: var(--accent);
