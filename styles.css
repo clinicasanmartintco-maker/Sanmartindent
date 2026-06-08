@@ -191,8 +191,8 @@ ul { list-style: none; }
     box-shadow: 0 0 16px rgba(241,159,5,0.15);
 }
 .service__icon-img {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 4rem;
+    height: 4rem;
     object-fit: contain;
 }
 .implant-svg, .bracket-svg {
