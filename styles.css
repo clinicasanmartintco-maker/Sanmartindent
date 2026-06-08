@@ -190,18 +190,10 @@ ul { list-style: none; }
     transition: all var(--transition);
     box-shadow: 0 0 16px rgba(241,159,5,0.15);
 }
-.service__icon--implant {
-    flex-direction: column;
-    gap: 1px;
-}
-.service__icon--implant .fa-crown {
-    font-size: 1rem;
+.implant-svg {
+    width: 2rem;
+    height: auto;
     color: var(--accent);
-}
-.service__icon--implant .fa-screwdriver {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    transform: rotate(180deg);
 }
 .service__icon--endo i {
     background: linear-gradient(to bottom, var(--accent) 45%, #d95f5f 45%);
