@@ -179,12 +179,12 @@ ul { list-style: none; }
 .about__text strong { color: var(--accent); font-weight: 600; }
 .about__text .btn { margin-top: 0.5rem; }
 .about__logo img {
-    width: 340px; max-width: 100%;
-    filter: drop-shadow(0 0 50px rgba(241,159,5,0.3));
+    width: 100%; max-width: 480px;
     margin: 0 auto;
-    border-radius: 50%;
-    border: 3px solid var(--accent);
-    box-shadow: 0 0 0 10px rgba(241,159,5,0.07);
+    border-radius: var(--radius);
+    border: 2px solid rgba(241,159,5,0.35);
+    box-shadow: var(--shadow), 0 0 32px rgba(241,159,5,0.15);
+    object-fit: cover;
 }
 
 /* ===== TESTIMONIALS ===== */
