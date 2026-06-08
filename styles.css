@@ -337,7 +337,7 @@ ul { list-style: none; }
     font-size: 5rem; color: rgba(241,159,5,0.3);
     overflow: hidden;
 }
-.team__avatar img { width: 100%; height: 100%; object-fit: cover; }
+.team__avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
 .team__info { padding: 1.75rem 1.5rem; }
 .team__name { font-family: var(--font-title); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
 .team__title { color: var(--accent); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.75rem; font-family: var(--font-title); }
