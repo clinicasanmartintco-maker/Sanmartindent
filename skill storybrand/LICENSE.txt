@@ -1,0 +1,21 @@
+License Terms for StoryBrand Framework Skill
+
+Copyright © 2026. All rights reserved.
+
+This skill is provided as-is for use with Claude Code and Anthropic's Claude API.
+
+The StoryBrand Framework is based on the work of Donald Miller and "Building a StoryBrand: Clarify Your Message So Customers Will Listen" (HarperCollins, 2017).
+
+This skill is designed for dental and healthcare marketing applications and includes customizations for San Martín Dent and DG Dentista dental practices.
+
+Terms of Use:
+- Use this skill to generate marketing content, brand scripts, and customer-centered messaging
+- Adapt the framework to your specific business context
+- Do not claim authorship of the StoryBrand Framework itself
+- Respect all patient privacy and consent requirements when using real patient photos and testimonials
+
+Attribution:
+The StoryBrand Framework is the intellectual property of Donald Miller and StoryBrand, Inc.
+This skill adapts and applies that framework for dental marketing purposes.
+
+For questions about the StoryBrand Framework, visit www.storybrand.com

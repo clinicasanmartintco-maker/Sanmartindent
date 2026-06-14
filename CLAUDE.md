@@ -97,6 +97,57 @@ El posicionamiento en Google es una prioridad del proyecto. Cada encabezado (`h1
 <link rel="canonical" href="https://sanmartindent.cl/">
 ```
 
+## Generación de imágenes con IA (Higgsfield)
+
+### API
+- Base URL: `https://platform.higgsfield.ai`
+- Endpoint imagen: `POST /flux-pro/kontext/max/text-to-image`
+- Auth header: `Authorization: Key <ID>:<SECRET>` (credenciales en `HIGGSFIELD_API_KEY` env var)
+- Polling: `GET /requests/{request_id}/status` cada 5 s hasta `status == "completed"`
+- Resultado: `response.images[0].url`
+- Post-proceso: convertir PNG → JPEG 82% calidad, redimensionar a ≤1200px ancho (System.Drawing en PowerShell)
+
+### Tamaños objetivo por uso
+| Uso | Dimensión solicitada | Ancho JPEG final |
+|---|---|---|
+| Hero / og:image | `16:9` | 1200 px |
+| Imagen inline artículo | `16:9` | 1200 px |
+| Retrato / antes-después | `4:3` | 800 px |
+
+### Prompt template obligatorio para imágenes del sitio
+
+Todas las imágenes generadas para San Martin Dent deben seguir esta estructura de prompt:
+
+```
+[DESCRIPCIÓN DE ESCENA: persona/s chilena/s de 45–60 años en situación cotidiana relacionada con sonrisa/confianza/vida social],
+[AMBIENTE: consultorio dental elegante / evento social / entorno profesional / espacio doméstico cálido],
+[EMOCIÓN: inseguridad / confianza recuperada / alegría natural / calidez profesional],
+[LUZ: luz natural suave / iluminación cinematográfica cálida / fondo neutro elegante],
+shallow depth of field, medium shot or close-up, candid and natural expression,
+fair white skin, light complexion, Caucasian appearance, white Chilean appearance,
+NO Black or African-descent people, NO dark skin tones — all subjects must appear Chilean mestizo or white,
+photorealistic, professional photography, cinematic lighting,
+no text, no logos, no watermarks
+```
+
+**Reglas de aplicación:**
+- Reemplazar cada `[BLOQUE]` con la descripción concreta de la escena antes de enviar el prompt.
+- Nunca omitir las líneas fijas (shallow depth of field, complexión, restricción de raza, no text…).
+- El perfil físico es siempre: chileno/a de tez blanca o mestiza, 45–60 años, apariencia natural cotidiana. **Nunca incluir personas de tez oscura o raza negra** — el público objetivo es chileno.
+- Para escenas antes/después: usar seeds consecutivos (ej. 501 / 502) para mantener coherencia visual.
+- Guardar las imágenes en `assets/blog/` con nombres descriptivos en kebab-case.
+
+## Deploy policy — IMPORTANTE
+
+El sitio está alojado en **Netlify** (dominio `sanmartindent.cl`), conectado al repositorio GitHub `clinicasanmartintco-maker/Sanmartindent`. Cada deploy en Netlify consume créditos.
+
+**Reglas obligatorias:**
+
+- **Nunca hacer `git push` automáticamente** después de un cambio. Siempre hacer commit local y esperar confirmación explícita del usuario antes de subir.
+- Acumular todos los cambios pendientes en commits locales. Solo hacer push cuando el usuario diga explícitamente "publica", "sube" o "deploy".
+- Antes de proponer un push, listar brevemente qué cambios se van a publicar para que el usuario decida.
+- El usuario abre el sitio localmente (`index.html` en Chrome) para verificar antes de publicar.
+
 ## Language
 
 All user-facing text is in **Spanish (Chile)**. Keep it that way for any new copy.

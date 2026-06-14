@@ -1,0 +1,98 @@
+---
+name: storybrand
+version: 1.0
+description: StoryBrand Framework for Dental and Healthcare Marketing
+author: StoryBrand Framework Applied for Dental Practices
+---
+
+# StoryBrand Framework Skill
+
+This skill provides comprehensive guidance on the StoryBrand 7-Part Framework for dental and healthcare marketing. It includes:
+
+- Complete framework documentation (SKILL.md)
+- Brand script templates for your specific clinic (BRAND_SCRIPT_TEMPLATE.md)
+- Content type application guides (CONTENT_APPLICATION_GUIDE.md)
+- Real-world completed examples (COMPLETED_EXAMPLES.md)
+
+## Quick Start
+
+1. **Read the main documentation** (SKILL.md) to understand all 7 parts of the framework
+2. **Fill out the brand script template** (BRAND_SCRIPT_TEMPLATE.md) with your clinic's specific messaging
+3. **Apply the framework to your content** using the content application guide
+4. **Reference the completed examples** to see how it works in practice
+
+## The 7 Parts
+
+1. **A Character** – Your customer is the hero
+2. **Has a Problem** – External, internal, and philosophical
+3. **And Meets a Guide** – You demonstrate empathy + authority
+4. **Who Gives Them a Plan** – Simple 3-step process
+5. **And Calls Them to Action** – Direct and transitional CTAs
+6. **That Ends in Success** – Character transformation
+7. **And Helps Them Avoid Failure** – Stakes and consequences
+
+## Key Commands for Claude Code
+
+When working with this skill in Claude Code, you can ask Claude to:
+
+- **Generate a brand script**: "Using the StoryBrand framework, write a complete brand script for [your service]"
+- **Create landing page copy**: "Write a landing page using the 7-part StoryBrand framework for [your service]"
+- **Develop email sequences**: "Create a 4-email nurture sequence using StoryBrand structure for [your audience]"
+- **Write sales scripts**: "Write a consultative sales conversation script using StoryBrand framework"
+- **Audit existing copy**: "Review this copy against the StoryBrand framework and suggest improvements"
+- **Create social content**: "Write 5 Instagram posts using StoryBrand (focusing on parts 1, 2, and 6)"
+
+## Important Constraints (San Martín Dent)
+
+- ❌ Never use "gratis" or "free consultation"
+- ❌ Never use AI-generated dental images
+- ✅ Use real patient photos only (with consent)
+- ✅ Brand colors: Navy (#172940), Gold (#f19f05), Light text (#f2f2f2)
+- ✅ Typography: Montserrat 700–800 for titles, Open Sans 400 for body
+- ✅ All CTAs direct to WhatsApp (+56 9 6727 0623)
+
+## Files Included
+
+- **SKILL.md** – Complete StoryBrand framework documentation with dental examples
+- **BRAND_SCRIPT_TEMPLATE.md** – Fill-in-the-blank template for your brand script
+- **CONTENT_APPLICATION_GUIDE.md** – How to apply the framework to different content types
+- **COMPLETED_EXAMPLES.md** – Real examples: brand scripts, landing pages, emails, social posts, sales conversations
+
+## How to Use in Claude Code
+
+```
+import the skill and ask Claude to help with any of the following:
+
+- Develop your complete StoryBrand brand script
+- Write specific pieces of marketing copy
+- Audit existing messaging
+- Create content calendars using StoryBrand structure
+- Train your team on customer-centered messaging
+- Develop sales conversation frameworks
+```
+
+## Learning Path
+
+1. **Understand** (30 min): Read SKILL.md to fully grasp the 7-part framework
+2. **Apply** (1–2 hours): Complete BRAND_SCRIPT_TEMPLATE.md with your clinic's messaging
+3. **Create** (ongoing): Use CONTENT_APPLICATION_GUIDE.md to create new pieces of content
+4. **Reference** (as needed): Check COMPLETED_EXAMPLES.md for formatting and tone
+
+## Need Help?
+
+Ask Claude in any conversation:
+- "Using the StoryBrand skill, help me [specific task]"
+- "Review my copy using the StoryBrand framework"
+- "Create [content type] using parts [X] and [Y] of the framework"
+
+The skill will guide you through the framework step-by-step.
+
+---
+
+**Copyright & Attribution**
+
+The StoryBrand Framework is based on Donald Miller's "Building a StoryBrand" (HarperCollins, 2017).
+
+This skill adapts and applies that framework specifically for dental and healthcare marketing.
+
+For more information, visit www.storybrand.com
