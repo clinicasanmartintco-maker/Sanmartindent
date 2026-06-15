@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de Sonrisa Temuco | San Martin Dent — Agenda por WhatsApp</title>
+    <meta name="description" content="Recupera tu sonrisa en Temuco. Diseño de sonrisa, implantes y odontología integral. Consulta sin costo. Agenda por WhatsApp — respondemos en minutos.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sanmartindent.cl/landing.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sanmartindent.cl/landing.html">
+    <meta property="og:title" content="Diseño de Sonrisa Temuco | San Martin Dent">
+    <meta property="og:description" content="Recupera tu sonrisa. Diseño de sonrisa, implantes y odontología integral en Temuco. Consulta sin costo. Respuesta en minutos.">
+    <meta property="og:image" content="https://sanmartindent.cl/assets/clinica-exterior.jpg">
+    <meta property="og:locale" content="es_CL">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/logo.png">
+
+    <style>
+        /* ===== LANDING PAGE — alta conversión ===== */
+
+        /* Fade-in base para animaciones */
+        .lp-fade {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+        }
+        .lp-fade.visible { opacity: 1; transform: translateY(0); }
+        .lp-fade-delay-1 { transition-delay: 0.1s; }
+        .lp-fade-delay-2 { transition-delay: 0.2s; }
+        .lp-fade-delay-3 { transition-delay: 0.3s; }
+        .lp-fade-delay-4 { transition-delay: 0.4s; }
+
+        /* Announcement bar */
+        .lp-announce {
+            background: linear-gradient(90deg, rgba(241,159,5,0.18), rgba(241,159,5,0.1), rgba(241,159,5,0.18));
+            border-bottom: 1px solid rgba(241,159,5,0.35);
+            text-align: center; padding: 0.65rem 1.5rem;
+            font-family: var(--font-title); font-size: 0.8rem;
+            font-weight: 700; color: var(--text);
+            position: relative; z-index: 1001;
+            display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+        }
+        .lp-announce__dot { color: var(--accent); font-size: 0.7rem; }
+        .lp-announce a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+        .lp-announce__close {
+            position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+            background: none; border: none; color: var(--text-muted); cursor: pointer;
+            font-size: 1rem; padding: 0.25rem;
+        }
+
+        /* Header mínimo */
+        .lp-header {
+            position: sticky; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(10, 22, 38, 0.98); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(241,159,5,0.22);
+            padding: 0 1.5rem;
+        }
+        .lp-header__inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 66px;
+        }
+        .lp-header__logo { height: 42px; width: auto; }
+        .lp-header__phone {
+            display: flex; align-items: center; gap: 0.45rem;
+            color: var(--text-muted); font-family: var(--font-title);
+            font-size: 0.8rem; font-weight: 600;
+        }
+        .lp-header__phone i { color: #25D366; }
+
+        /* Hero */
+        .lp-hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            padding: 5rem 1.5rem 5rem;
+            background-image: url('assets/clinica-exterior.jpg');
+            background-size: cover; background-position: center;
+            position: relative;
+        }
+        .lp-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(160deg, rgba(8,18,32,0.93) 0%, rgba(15,29,47,0.86) 100%);
+            z-index: 0;
+        }
+        .lp-hero__inner {
+            position: relative; z-index: 1;
+            max-width: 800px; margin: 0 auto;
+        }
+        .lp-hero__eyebrow {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(241,159,5,0.12); border: 1px solid rgba(241,159,5,0.35);
+            color: var(--accent); border-radius: 999px;
+            font-family: var(--font-title); font-size: 0.76rem; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            padding: 0.4rem 1.1rem; margin-bottom: 1.75rem;
+        }
+        .lp-hero__title {
+            font-family: var(--font-title); font-weight: 800;
+            font-size: clamp(2.2rem, 5.5vw, 4rem);
+            line-height: 1.1; margin-bottom: 0.75rem; color: var(--text);
+            letter-spacing: -0.5px;
+        }
+        .lp-hero__title span { color: var(--accent); text-shadow: 0 0 30px rgba(241,159,5,0.4); }
+        .lp-hero__subtitle {
+            font-family: var(--font-elegant); font-style: italic;
+            font-size: 1.15rem; color: var(--text-muted);
+            line-height: 1.75; max-width: 580px; margin: 0 auto 2.25rem;
+        }
+        .lp-hero__cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 2.25rem; }
+        .btn--xl { padding: 1.15rem 2.8rem; font-size: 1.05rem; }
+        .lp-cta-sub {
+            font-family: var(--font-title); font-size: 0.76rem; font-weight: 600;
+            color: var(--text-muted); letter-spacing: 0.04em;
+        }
+        .lp-cta-sub i { color: var(--accent); margin-right: 0.2rem; }
+        .lp-hero__proof {
+            display: inline-flex; align-items: center;
+            gap: 0.85rem; flex-wrap: wrap; justify-content: center;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(241,159,5,0.2);
+            border-radius: 999px; padding: 0.6rem 1.5rem;
+            font-family: var(--font-title); font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .lp-hero__proof .stars { color: var(--accent); letter-spacing: 2px; }
+        .lp-hero__proof .sep { opacity: 0.25; }
+        .lp-hero__scroll {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            color: var(--accent); font-size: 1.2rem; animation: bounce 2s infinite; z-index: 1;
+        }
+
+        /* Stats bar */
+        .lp-stats {
+            background: var(--bg-card);
+            border-bottom: 1px solid rgba(241,159,5,0.15);
+            padding: 2rem 1.5rem;
+        }
+        .lp-stats__inner {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 0; text-align: center;
+        }
+        .lp-stat {
+            display: flex; flex-direction: column; gap: 0.2rem;
+            padding: 0 1.5rem;
+        }
+        .lp-stat + .lp-stat { border-left: 1px solid rgba(241,159,5,0.15); }
+        .lp-stat__num {
+            font-family: var(--font-title); font-size: 1.65rem;
+            font-weight: 800; color: var(--accent); line-height: 1;
+        }
+        .lp-stat__label {
+            font-size: 0.77rem; color: var(--text-muted);
+            font-family: var(--font-title); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.06em;
+        }
+
+        /* Sección base */
+        .lp-section { padding: 5.5rem 1.5rem; }
+        .lp-section--dark { background: var(--bg); }
+        .lp-section--mid { background: var(--bg-light); }
+        .lp-section--deep { background: var(--bg-deep); }
+        .lp-inner { max-width: 1100px; margin: 0 auto; }
+        .lp-inner--narrow { max-width: 780px; margin: 0 auto; }
+        .lp-label {
+            font-family: var(--font-title); font-size: 0.76rem; font-weight: 700;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 0.65rem; text-align: center;
+            display: block;
+        }
+
+        /* Problema */
+        .lp-problem__title {
+            font-family: var(--font-title); font-weight: 800;
+            font-size: clamp(1.65rem, 3.5vw, 2.4rem);
+            text-align: center; margin-bottom: 0.75rem; color: var(--text);
+        }
+        .lp-problem__title span { color: var(--accent); }
+        .lp-problem__intro {
+            text-align: center; font-family: var(--font-elegant); font-style: italic;
+            color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.75rem;
+        }
+        .lp-problem__grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 0.9rem; margin-bottom: 2.75rem;
+        }
+        .lp-problem__item {
+            background: rgba(220,50,50,0.06);
+            border: 1px solid rgba(220,50,50,0.18);
+            border-left: 3px solid rgba(220,80,80,0.55);
+            border-radius: var(--radius-small);
+            padding: 1.1rem 1.35rem;
+            display: flex; align-items: flex-start; gap: 0.8rem;
+            color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;
+        }
+        .lp-problem__item i { color: rgba(220,80,80,0.75); flex-shrink: 0; margin-top: 2px; }
+        .lp-problem__resolution {
+            background: linear-gradient(135deg, rgba(241,159,5,0.1), rgba(241,159,5,0.04));
+            border: 1px solid rgba(241,159,5,0.28);
+            border-radius: var(--radius);
+            padding: 2.25rem 2.5rem;
+            text-align: center;
+        }
+        .lp-problem__resolution p {
+            font-size: 1.15rem; color: var(--text); line-height: 1.7;
+            font-family: var(--font-elegant); font-style: italic; margin-bottom: 1.5rem;
+        }
+        .lp-problem__resolution strong { color: var(--accent); font-style: normal; }
+
+        /* Cómo funciona */
+        .lp-steps {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem; margin-top: 3rem; position: relative;
+        }
+        .lp-steps::before {
+            content: '';
+            position: absolute; top: 2.2rem; left: calc(16.66% + 1.5rem); right: calc(16.66% + 1.5rem);
+            height: 2px; background: linear-gradient(90deg, var(--accent), transparent, var(--accent));
+            opacity: 0.3; z-index: 0;
+        }
+        .lp-step {
+            background: var(--bg-card);
+            border: 1px solid rgba(241,159,5,0.15);
+            border-radius: var(--radius); padding: 2rem 1.5rem;
+            text-align: center; position: relative; z-index: 1;
+        }
+        .lp-step__num {
+            width: 46px; height: 46px;
+            background: var(--accent); color: var(--bg-deep);
+            font-family: var(--font-title); font-weight: 800; font-size: 1.1rem;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.25rem;
+            box-shadow: 0 0 20px rgba(241,159,5,0.45);
+        }
+        .lp-step h3 {
+            font-family: var(--font-title); font-weight: 700;
+            font-size: 1rem; margin-bottom: 0.6rem; color: var(--text);
+        }
+        .lp-step p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; }
+        .lp-step__badge {
+            display: inline-block; margin-top: 0.85rem;
+            background: rgba(241,159,5,0.1); border: 1px solid rgba(241,159,5,0.25);
+            border-radius: 999px; padding: 0.2rem 0.75rem;
+            font-family: var(--font-title); font-size: 0.72rem; font-weight: 700;
+            color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em;
+        }
+
+        /* Servicios */
+        .lp-services__featured {
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 2.75rem;
+            display: grid; grid-template-columns: auto 1fr;
+            gap: 3rem; align-items: center;
+            margin-bottom: 1.75rem;
+            box-shadow: 0 0 48px rgba(241,159,5,0.16);
+            position: relative; overflow: hidden;
+        }
+        .lp-services__ribbon {
+            position: absolute; top: 1.4rem; right: -2.4rem;
+            background: var(--accent); color: var(--bg-deep);
+            font-family: var(--font-title); font-size: 0.65rem; font-weight: 800;
+            letter-spacing: 0.12em; padding: 0.3rem 3.2rem;
+            transform: rotate(45deg); transform-origin: center;
+            text-transform: uppercase;
+        }
+        .lp-services__featured-icon {
+            width: 110px; height: 110px; flex-shrink: 0;
+            background: rgba(241,159,5,0.08); border-radius: 50%;
+            border: 2px solid rgba(241,159,5,0.25);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .lp-services__featured-text h3 {
+            font-family: var(--font-title); font-size: 1.65rem;
+            font-weight: 800; margin-bottom: 0.85rem; color: var(--text);
+        }
+        .lp-services__featured-text h3 span { color: var(--accent); }
+        .lp-services__featured-text > p {
+            color: var(--text-muted); line-height: 1.8; margin-bottom: 1.25rem; font-size: 0.98rem;
+        }
+        .lp-feat-list {
+            list-style: none; display: flex; flex-direction: column;
+            gap: 0.45rem; margin-bottom: 1.75rem;
+        }
+        .lp-feat-list li {
+            display: flex; align-items: center; gap: 0.6rem;
+            color: var(--text-muted); font-size: 0.92rem;
+        }
+        .lp-feat-list li i { color: var(--accent); flex-shrink: 0; }
+        .lp-services__grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.1rem;
+        }
+        .lp-service__card {
+            background: var(--bg-card);
+            border: 1px solid rgba(241,159,5,0.15);
+            border-top: 3px solid rgba(241,159,5,0.35);
+            border-radius: var(--radius); padding: 1.85rem;
+            text-align: center;
+            transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .lp-service__card:hover {
+            transform: translateY(-6px); border-color: var(--accent);
+            box-shadow: 0 0 24px rgba(241,159,5,0.18);
+        }
+        .lp-service__icon {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: rgba(241,159,5,0.1); border: 2px solid rgba(241,159,5,0.22);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: var(--accent); margin-bottom: 1.1rem;
+        }
+        .lp-service__card h4 {
+            font-family: var(--font-title); font-size: 0.98rem;
+            font-weight: 700; margin-bottom: 0.65rem;
+        }
+        .lp-service__card p {
+            color: var(--text-muted); font-size: 0.88rem;
+            line-height: 1.65; flex: 1; margin-bottom: 1.1rem;
+        }
+
+        /* Doctores */
+        .lp-team__grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem; margin-top: 3rem;
+        }
+        .lp-team__card {
+            background: var(--bg-card);
+            border: 1px solid rgba(241,159,5,0.15);
+            border-top: 3px solid var(--accent);
+            border-radius: var(--radius); overflow: hidden;
+            text-align: center;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .lp-team__card:hover { transform: translateY(-6px); box-shadow: 0 0 28px rgba(241,159,5,0.18); }
+        .lp-team__avatar { width: 100%; height: 195px; background: var(--bg-light); overflow: hidden; }
+        .lp-team__avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+        .lp-team__info { padding: 1.35rem 1.1rem; }
+        .lp-team__name { font-family: var(--font-title); font-weight: 700; font-size: 0.97rem; margin-bottom: 0.2rem; }
+        .lp-team__role { color: var(--accent); font-size: 0.78rem; font-family: var(--font-title); font-weight: 600; }
+        .lp-team__trust { margin-top: 2.75rem; text-align: center; }
+        .lp-team__trust p {
+            color: var(--text-muted); font-family: var(--font-elegant);
+            font-style: italic; font-size: 1.05rem; max-width: 580px; margin: 0 auto 1.5rem;
+        }
+
+        /* Testimonios */
+        .lp-test__grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem; margin-top: 3rem;
+        }
+        .lp-test__card {
+            background: var(--bg-card);
+            border: 1px solid rgba(241,159,5,0.12);
+            border-top: 3px solid rgba(241,159,5,0.5);
+            border-radius: var(--radius); padding: 1.65rem;
+            display: flex; flex-direction: column; gap: 0.85rem;
+        }
+        .lp-test__stars { color: var(--accent); font-size: 0.98rem; letter-spacing: 2px; }
+        .lp-test__text {
+            color: var(--text-muted); font-size: 0.92rem; line-height: 1.8;
+            font-style: italic; font-family: var(--font-elegant); flex: 1;
+        }
+        .lp-test__author {
+            display: flex; align-items: center; gap: 0.6rem;
+            font-family: var(--font-title); font-size: 0.83rem; font-weight: 700;
+        }
+        .lp-test__author i { color: var(--accent); font-size: 1.35rem; }
+        .lp-test__source { font-size: 0.76rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.35rem; }
+        .lp-test__source i { color: #4285F4; }
+        .lp-test__cta { text-align: center; margin-top: 2.75rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+        .lp-test__cta p { color: var(--text-muted); font-family: var(--font-elegant); font-style: italic; font-size: 1rem; }
+
+        /* FAQ — colapsable */
+        .lp-faq__list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 3rem; }
+        .lp-faq__item {
+            background: var(--bg-card);
+            border: 1px solid rgba(241,159,5,0.12);
+            border-radius: var(--radius-small); overflow: hidden;
+        }
+        .lp-faq__q {
+            width: 100%; background: none; border: none; cursor: pointer; padding: 1.35rem 1.5rem;
+            font-family: var(--font-title); font-weight: 700; font-size: 0.97rem; color: var(--text);
+            display: flex; align-items: center; gap: 0.65rem; text-align: left;
+            transition: color var(--transition);
+        }
+        .lp-faq__q:hover { color: var(--accent); }
+        .lp-faq__q i.icon-q { color: var(--accent); flex-shrink: 0; }
+        .lp-faq__q .icon-chev {
+            margin-left: auto; flex-shrink: 0; color: var(--text-muted);
+            transition: transform 0.3s ease; font-size: 0.85rem;
+        }
+        .lp-faq__item.open .icon-chev { transform: rotate(180deg); }
+        .lp-faq__a {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 1.5rem;
+        }
+        .lp-faq__item.open .lp-faq__a { max-height: 200px; padding: 0 1.5rem 1.35rem; }
+        .lp-faq__a p { color: var(--text-muted); font-size: 0.93rem; line-height: 1.75; margin: 0; }
+        .lp-faq__a strong { color: var(--accent); }
+        .lp-faq__cta { text-align: center; margin-top: 2.75rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+
+        /* Nota del fundador */
+        .lp-founder {
+            background: var(--bg-card);
+            border: 1px solid rgba(241,159,5,0.2);
+            border-radius: var(--radius); padding: 2.5rem;
+            display: grid; grid-template-columns: auto 1fr;
+            gap: 2.25rem; align-items: center;
+            margin-top: 1.5rem;
+        }
+        .lp-founder__avatar {
+            width: 100px; height: 100px; border-radius: 50%; overflow: hidden;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 22px rgba(241,159,5,0.3);
+            flex-shrink: 0;
+            background: var(--bg-light);
+        }
+        .lp-founder__avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+        .lp-founder__quote {
+            font-family: var(--font-elegant); font-style: italic;
+            font-size: 1.05rem; color: var(--text); line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .lp-founder__name { font-family: var(--font-title); font-weight: 700; color: var(--accent); font-size: 0.88rem; }
+
+        /* CTA Final */
+        .lp-cta-final {
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .lp-cta-final::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at center, rgba(241,159,5,0.09) 0%, transparent 65%);
+        }
+        .lp-cta-final__inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+        .lp-cta-final__eyebrow { font-family: var(--font-title); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: block; }
+        .lp-cta-final__title {
+            font-family: var(--font-title); font-weight: 800;
+            font-size: clamp(1.8rem, 4vw, 2.75rem);
+            margin-bottom: 1rem; color: var(--text); line-height: 1.15;
+        }
+        .lp-cta-final__title span { color: var(--accent); }
+        .lp-cta-final__sub {
+            color: var(--text-muted); font-size: 1.03rem;
+            margin-bottom: 2.25rem; line-height: 1.65;
+            font-family: var(--font-elegant); font-style: italic;
+        }
+        .lp-cta-final__btns { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+        .lp-cta-final__meta {
+            margin-top: 2.25rem;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem;
+            font-family: var(--font-title); font-size: 0.8rem; color: var(--text-muted);
+        }
+        .lp-cta-final__meta span { display: flex; align-items: center; gap: 0.3rem; }
+        .lp-cta-final__meta i { color: var(--accent); }
+
+        /* Footer mínimo */
+        .lp-footer {
+            padding: 2rem 1.5rem;
+            background: var(--bg-deep);
+            border-top: 1px solid rgba(241,159,5,0.12);
+            text-align: center;
+        }
+        .lp-footer__inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 0.5rem;
+        }
+        .lp-footer__logo { height: 46px; width: auto; }
+        .lp-footer__copy { color: var(--text-muted); font-size: 0.78rem; }
+        .lp-footer__link { color: var(--accent); font-size: 0.78rem; font-family: var(--font-title); font-weight: 600; }
+
+        /* Sticky CTA — móvil (aparece al hacer scroll) */
+        .lp-sticky-cta {
+            display: none;
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
+            background: rgba(10, 22, 38, 0.97); backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(241,159,5,0.25);
+            padding: 0.85rem 1.25rem;
+            align-items: center; justify-content: space-between;
+            gap: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.35s ease;
+        }
+        .lp-sticky-cta.visible {
+            display: flex;
+            transform: translateY(0);
+        }
+        .lp-sticky-cta__text {
+            font-family: var(--font-title); font-size: 0.8rem;
+            color: var(--text-muted); line-height: 1.3;
+        }
+        .lp-sticky-cta__text strong { color: var(--text); display: block; font-size: 0.87rem; }
+        .lp-sticky-cta .btn { font-size: 0.85rem; padding: 0.7rem 1.4rem; white-space: nowrap; flex-shrink: 0; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .lp-stats__inner { grid-template-columns: repeat(2, 1fr); }
+            .lp-stat { padding: 0.75rem 1rem; }
+            .lp-stat + .lp-stat { border-left: none; }
+            .lp-stat:nth-child(odd) { border-right: 1px solid rgba(241,159,5,0.15); }
+            .lp-stat:nth-child(3), .lp-stat:nth-child(4) { border-top: 1px solid rgba(241,159,5,0.15); }
+            .lp-services__featured { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+            .lp-services__featured-icon { margin: 0 auto; }
+            .lp-services__ribbon { display: none; }
+            .lp-services__grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+            .lp-team__grid { grid-template-columns: 1fr; max-width: 340px; margin: 3rem auto 0; }
+            .lp-test__grid { grid-template-columns: 1fr; }
+            .lp-problem__grid { grid-template-columns: 1fr; }
+            .lp-steps { grid-template-columns: 1fr; }
+            .lp-steps::before { display: none; }
+            .lp-founder { grid-template-columns: 1fr; text-align: center; }
+            .lp-founder__avatar { margin: 0 auto; }
+        }
+        @media (max-width: 640px) {
+            .lp-header__phone { display: none; }
+        }
+        @media (max-width: 768px) {
+            .lp-sticky-cta { display: flex; }
+            /* padding bottom so content not hidden under sticky bar */
+            body { padding-bottom: 74px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ANNOUNCEMENT BAR ===== -->
+    <div class="lp-announce" id="lpAnnounce">
+        <span class="lp-announce__dot">●</span>
+        <span>Te respondemos en menos de 1 hora en horario de atención &mdash;
+            <a href="https://wa.me/56967270623?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta%20en%20San%20Martin%20Dent" target="_blank" rel="noopener">Escríbenos ahora &rarr;</a>
+        </span>
+        <button class="lp-announce__close" onclick="document.getElementById('lpAnnounce').remove()" aria-label="Cerrar">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- ===== HEADER MÍNIMO ===== -->
+    <header class="lp-header">
+        <div class="lp-header__inner">
+            <a href="index.html">
+                <img src="assets/logos-icono.png" alt="San Martin Dent — Dentista Temuco" class="lp-header__logo">
+            </a>
+            <span class="lp-header__phone">
+                <i class="fab fa-whatsapp"></i> +56 9 6727 0623
+            </span>
+            <a href="https://wa.me/56967270623?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta%20en%20San%20Martin%20Dent"
+               class="btn btn--primary" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> Agendar hora
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="lp-hero">
+        <div class="lp-hero__inner">
+            <span class="lp-hero__eyebrow lp-fade">
+                <i class="fas fa-star"></i> Clínica Dental · Av. San Martín 0795, Temuco
+            </span>
+            <h1 class="lp-hero__title lp-fade lp-fade-delay-1">
+                ¿Cuánto tiempo llevas<br><span>ocultando tu sonrisa?</span>
+            </h1>
+            <p class="lp-hero__subtitle lp-fade lp-fade-delay-2">
+                En San Martin Dent te ayudamos a recuperarla con diseño de sonrisa, implantes dentales y odontología integral — con el equipo que más cuida a sus pacientes en La Araucanía.
+            </p>
+            <div class="lp-hero__cta-wrap lp-fade lp-fade-delay-3">
+                <a href="https://wa.me/56967270623?text=Hola%2C%20quiero%20una%20consulta%20de%20evaluaci%C3%B3n%20en%20San%20Martin%20Dent"
+                   class="btn btn--whatsapp btn--xl" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> Quiero mi consulta de evaluación
+                </a>
+                <span class="lp-cta-sub">
+                    <i class="fas fa-check-circle"></i> Sin costo &nbsp;·&nbsp;
+                    <i class="fas fa-check-circle"></i> Sin compromiso &nbsp;·&nbsp;
+                    <i class="fas fa-check-circle"></i> Respondemos hoy
+                </span>
+            </div>
+            <div class="lp-hero__proof lp-fade lp-fade-delay-4">
+                <span class="stars">★★★★★</span>
+                <span class="sep">|</span>
+                <span>5.0 Google</span>
+                <span class="sep">|</span>
+                <span>3 doctores fundadores</span>
+                <span class="sep">|</span>
+                <span>Temuco, La Araucanía</span>
+            </div>
+        </div>
+        <div class="lp-hero__scroll" aria-hidden="true"><i class="fas fa-chevron-down"></i></div>
+    </section>
+
+    <!-- ===== STATS BAR ===== -->
+    <div class="lp-stats">
+        <div class="lp-stats__inner">
+            <div class="lp-stat lp-fade">
+                <span class="lp-stat__num">★ 5.0</span>
+                <span class="lp-stat__label">Valoración Google</span>
+            </div>
+            <div class="lp-stat lp-fade lp-fade-delay-1">
+                <span class="lp-stat__num">3</span>
+                <span class="lp-stat__label">Doctores fundadores</span>
+            </div>
+            <div class="lp-stat lp-fade lp-fade-delay-2">
+                <span class="lp-stat__num">Lun–Sáb</span>
+                <span class="lp-stat__label">Amplio horario</span>
+            </div>
+            <div class="lp-stat lp-fade lp-fade-delay-3">
+                <span class="lp-stat__num">Temuco</span>
+                <span class="lp-stat__label">Av. San Martín 0795</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PROBLEMA ===== -->
+    <section class="lp-section lp-section--dark">
+        <div class="lp-inner lp-inner--narrow">
+            <span class="lp-label lp-fade">¿Te identificas?</span>
+            <h2 class="lp-problem__title lp-fade lp-fade-delay-1">Señales de que <span>es momento de actuar</span></h2>
+            <p class="lp-problem__intro lp-fade lp-fade-delay-2">Muchos pacientes llegan a nosotros después de meses, o años, conviviendo con estas situaciones.</p>
+
+            <div class="lp-problem__grid">
+                <div class="lp-problem__item lp-fade"><i class="fas fa-times-circle"></i> Evitas sonreír en fotos o te tapas la boca al reír</div>
+                <div class="lp-problem__item lp-fade lp-fade-delay-1"><i class="fas fa-times-circle"></i> Sientes inseguridad al hablar con personas nuevas</div>
+                <div class="lp-problem__item lp-fade lp-fade-delay-2"><i class="fas fa-times-circle"></i> Tu sonrisa ya no refleja quién eres por dentro</div>
+                <div class="lp-problem__item lp-fade lp-fade-delay-3"><i class="fas fa-times-circle"></i> Tienes dolor, sensibilidad o piezas que faltan</div>
+                <div class="lp-problem__item lp-fade"><i class="fas fa-times-circle"></i> Has pensado en tratarte pero no sabes por dónde empezar</div>
+                <div class="lp-problem__item lp-fade lp-fade-delay-1"><i class="fas fa-times-circle"></i> Crees que mejorar tu sonrisa está fuera de tu alcance económico</div>
+            </div>
+
+            <div class="lp-problem__resolution lp-fade">
+                <p>Si marcaste aunque sea una: <strong>tienes solución, y está más cerca de lo que crees.</strong><br>Una evaluación sin costo puede cambiar todo.</p>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+                    <a href="https://wa.me/56967270623?text=Hola%2C%20quiero%20conocer%20mis%20opciones%20en%20San%20Martin%20Dent"
+                       class="btn btn--primary" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> Quiero conocer mis opciones
+                    </a>
+                    <span class="lp-cta-sub">
+                        <i class="fas fa-check-circle"></i> Sin costo &nbsp;·&nbsp;
+                        <i class="fas fa-check-circle"></i> Sin compromiso
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CÓMO FUNCIONA ===== -->
+    <section class="lp-section lp-section--mid">
+        <div class="lp-inner lp-inner--narrow">
+            <span class="lp-label lp-fade">3 pasos simples</span>
+            <h2 class="section__title lp-fade lp-fade-delay-1">Así de fácil es <span>empezar</span></h2>
+            <p class="section__subtitle lp-fade lp-fade-delay-2">No necesitas venir de urgencia ni preparar nada. Solo escríbenos.</p>
+
+            <div class="lp-steps">
+                <div class="lp-step lp-fade">
+                    <div class="lp-step__num">1</div>
+                    <h3>Escríbenos por WhatsApp</h3>
+                    <p>Cuéntanos qué te preocupa o qué quieres mejorar. Sin formularios, sin burocracia.</p>
+                    <span class="lp-step__badge">Respondemos hoy</span>
+                </div>
+                <div class="lp-step lp-fade lp-fade-delay-1">
+                    <div class="lp-step__num">2</div>
+                    <h3>Agendamos tu evaluación</h3>
+                    <p>Te buscamos el horario que más te acomode — mañana, tarde o sábado.</p>
+                    <span class="lp-step__badge">Sin costo</span>
+                </div>
+                <div class="lp-step lp-fade lp-fade-delay-2">
+                    <div class="lp-step__num">3</div>
+                    <h3>Recibes tu plan personalizado</h3>
+                    <p>Te explicamos todo con claridad. Decides con calma, sin presión de ningún tipo.</p>
+                    <span class="lp-step__badge">Tú decides</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICIOS ===== -->
+    <section class="lp-section lp-section--dark">
+        <div class="lp-inner">
+            <span class="lp-label lp-fade">Lo que hacemos</span>
+            <h2 class="section__title lp-fade lp-fade-delay-1">Tratamientos dentales <span>en Temuco</span></h2>
+            <p class="section__subtitle lp-fade lp-fade-delay-2">Desde una limpieza de rutina hasta una transformación completa de tu sonrisa</p>
+
+            <!-- Diseño de sonrisa: servicio estrella -->
+            <div class="lp-services__featured lp-fade">
+                <span class="lp-services__ribbon">Servicio estrella</span>
+                <div class="lp-services__featured-icon">
+                    <img src="assets/icono-diseno-sonrisa.png" alt="Diseño de sonrisa Temuco" style="width:72px;height:72px;object-fit:contain;">
+                </div>
+                <div class="lp-services__featured-text">
+                    <h3>Diseño de Sonrisa <span>en Temuco</span></h3>
+                    <p>Transformamos tu sonrisa con un plan 100% personalizado — blanqueamiento, carillas, remodelado estético y más. Especialistas en pacientes adultos que quieren recuperar su confianza.</p>
+                    <ul class="lp-feat-list">
+                        <li><i class="fas fa-check"></i> Resultados visibles desde la primera sesión</li>
+                        <li><i class="fas fa-check"></i> Tratamiento sin dolor con anestesia local si se requiere</li>
+                        <li><i class="fas fa-check"></i> Resultados naturales adaptados a tu rostro</li>
+                        <li><i class="fas fa-check"></i> Facilidades de pago disponibles</li>
+                    </ul>
+                    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:0.45rem;">
+                        <a href="https://wa.me/56967270623?text=Hola%2C%20me%20interesa%20el%20Dise%C3%B1o%20de%20Sonrisa"
+                           class="btn btn--primary" target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp"></i> Consultar por Diseño de Sonrisa
+                        </a>
+                        <span class="lp-cta-sub"><i class="fas fa-check-circle"></i> Evaluación sin costo · Respuesta hoy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Otros servicios -->
+            <div class="lp-services__grid">
+                <div class="lp-service__card lp-fade">
+                    <div class="lp-service__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 95" fill="currentColor" style="width:1.7rem;height:auto;">
+                            <path d="M10,42 C7,35 6,22 10,12 C13,5 18,1 23,4 C26,6 29,11 30,13 C31,11 34,6 37,4 C42,1 47,5 50,12 C54,22 53,35 50,42 Z"/>
+                            <rect x="19" y="42" width="22" height="7" rx="3"/>
+                            <rect x="21" y="49" width="18" height="42" rx="3"/>
+                            <rect x="18" y="55" width="24" height="3" rx="1.5" fill="var(--bg-card)"/>
+                            <rect x="18" y="62" width="24" height="3" rx="1.5" fill="var(--bg-card)"/>
+                            <rect x="18" y="69" width="24" height="3" rx="1.5" fill="var(--bg-card)"/>
+                        </svg>
+                    </div>
+                    <h4>Implantes Dentales en Temuco</h4>
+                    <p>Recupera tu diente perdido de forma permanente. Nuestros implantólogos devuelven funcionalidad y estética con los más altos estándares.</p>
+                    <a href="https://wa.me/56967270623?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Implantes%20Dentales"
+                       class="btn btn--outline" target="_blank" rel="noopener">Consultar</a>
+                </div>
+                <div class="lp-service__card lp-fade lp-fade-delay-1">
+                    <div class="lp-service__icon"><i class="fas fa-shield-heart"></i></div>
+                    <h4>Odontología Integral en Temuco</h4>
+                    <p>Prevención, diagnóstico, prótesis y rehabilitación oral para toda la familia. Atención completa con enfoque humano y profesional.</p>
+                    <a href="https://wa.me/56967270623?text=Hola%2C%20me%20interesa%20la%20Odontolog%C3%ADa%20Integral"
+                       class="btn btn--outline" target="_blank" rel="noopener">Consultar</a>
+                </div>
+                <div class="lp-service__card lp-fade lp-fade-delay-2">
+                    <div class="lp-service__icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <h4>Ortodoncia y Estética Facial</h4>
+                    <p>Brackets, alineadores y tratamientos no invasivos para alinear tu sonrisa y armonizar tu rostro. Para todas las edades.</p>
+                    <a href="https://wa.me/56967270623?text=Hola%2C%20me%20interesa%20la%20Ortodoncia"
+                       class="btn btn--outline" target="_blank" rel="noopener">Consultar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EQUIPO ===== -->
+    <section class="lp-section lp-section--mid">
+        <div class="lp-inner">
+            <span class="lp-label lp-fade">Quiénes te atienden</span>
+            <h2 class="section__title lp-fade lp-fade-delay-1">Los dentistas <span>fundadores de San Martin Dent</span></h2>
+            <p class="section__subtitle lp-fade lp-fade-delay-2">No somos una cadena — somos una clínica donde los fundadores te atienden personalmente</p>
+
+            <div class="lp-team__grid">
+                <div class="lp-team__card lp-fade">
+                    <div class="lp-team__avatar"><img src="assets/dr-san-martin.png" alt="Dr. Ignacio San Martín, dentista Temuco"></div>
+                    <div class="lp-team__info">
+                        <p class="lp-team__name">Dr. Ignacio San Martín</p>
+                        <p class="lp-team__role">Cirujano Dentista · Fundador</p>
+                    </div>
+                </div>
+                <div class="lp-team__card lp-fade lp-fade-delay-1">
+                    <div class="lp-team__avatar"><img src="assets/dr-alegria.png" alt="Dr. Andrés Alegría, dentista Temuco"></div>
+                    <div class="lp-team__info">
+                        <p class="lp-team__name">Dr. Andrés Alegría</p>
+                        <p class="lp-team__role">Cirujano Dentista · Fundador</p>
+                    </div>
+                </div>
+                <div class="lp-team__card lp-fade lp-fade-delay-2">
+                    <div class="lp-team__avatar"><img src="assets/dr-gallardo.png" alt="Dr. Nicolás Gallardo, dentista Temuco"></div>
+                    <div class="lp-team__info">
+                        <p class="lp-team__name">Dr. Nicolás Gallardo</p>
+                        <p class="lp-team__role">Cirujano Dentista · Fundador</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nota del fundador -->
+            <div class="lp-founder lp-fade">
+                <div class="lp-founder__avatar">
+                    <img src="assets/dr-san-martin.png" alt="Dr. Ignacio San Martín">
+                </div>
+                <div>
+                    <p class="lp-founder__quote">"Fundamos San Martin Dent porque creemos que cada persona en Temuco merece una sonrisa de la que pueda estar orgullosa — sin importar su historia, su edad ni su presupuesto. Cuando un paciente llega inseguro y se va sonriendo, eso lo es todo."</p>
+                    <span class="lp-founder__name">— Dr. Ignacio San Martín, Co-Fundador</span>
+                </div>
+            </div>
+
+            <div class="lp-team__trust lp-fade">
+                <a href="equipo.html" class="btn btn--outline">Conoce a todo el equipo <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIOS ===== -->
+    <section class="lp-section lp-section--deep">
+        <div class="lp-inner">
+            <span class="lp-label lp-fade">Lo que dicen nuestros pacientes</span>
+            <h2 class="section__title lp-fade lp-fade-delay-1">Opiniones reales <span>de Google</span></h2>
+            <p class="section__subtitle lp-fade lp-fade-delay-2">Pacientes de Temuco y La Araucanía que ya dieron el paso</p>
+
+            <div class="lp-test__grid">
+                <div class="lp-test__card lp-fade">
+                    <div class="lp-test__stars">★★★★★</div>
+                    <p class="lp-test__text">"Clínica que cuenta con todas las tecnologías necesarias para darte un servicio de calidad y confiable, profesionales dispuestos a entregarte la mejor atención. Si tienes la oportunidad de agendar una hora, no dudes, dan muy buen servicio."</p>
+                    <div class="lp-test__author"><i class="fas fa-user-circle"></i> Felipe Ignacio Medina Castro</div>
+                    <span class="lp-test__source"><i class="fab fa-google"></i> Google</span>
+                </div>
+                <div class="lp-test__card lp-fade lp-fade-delay-1">
+                    <div class="lp-test__stars">★★★★★</div>
+                    <p class="lp-test__text">"Excelente atención, muy profesionales y muy cuidadosos."</p>
+                    <div class="lp-test__author"><i class="fas fa-user-circle"></i> Martín de Loyola</div>
+                    <span class="lp-test__source"><i class="fab fa-google"></i> Google</span>
+                </div>
+                <div class="lp-test__card lp-fade lp-fade-delay-2">
+                    <div class="lp-test__stars">★★★★★</div>
+                    <p class="lp-test__text">"¡Excelente atención! Muy amables todos. Totalmente recomendable."</p>
+                    <div class="lp-test__author"><i class="fas fa-user-circle"></i> Pablo Ignacio</div>
+                    <span class="lp-test__source"><i class="fab fa-google"></i> Google</span>
+                </div>
+            </div>
+
+            <div class="lp-test__cta lp-fade">
+                <p>¿Listo para ser nuestro próximo paciente satisfecho?</p>
+                <a href="https://wa.me/56967270623?text=Hola%2C%20quiero%20agendar%20mi%20consulta%20de%20evaluaci%C3%B3n%20en%20San%20Martin%20Dent"
+                   class="btn btn--whatsapp" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> Agendar mi evaluación ahora
+                </a>
+                <span class="lp-cta-sub"><i class="fas fa-check-circle"></i> Sin costo · Sin compromiso · Respondemos hoy</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="lp-section lp-section--mid">
+        <div class="lp-inner lp-inner--narrow">
+            <span class="lp-label lp-fade">Resolvemos tus dudas</span>
+            <h2 class="section__title lp-fade lp-fade-delay-1">Preguntas <span>frecuentes</span></h2>
+            <p class="section__subtitle lp-fade lp-fade-delay-2">Las que más nos hacen antes de agendar</p>
+
+            <div class="lp-faq__list">
+                <div class="lp-faq__item lp-fade">
+                    <button class="lp-faq__q" aria-expanded="false">
+                        <i class="fas fa-circle-question icon-q"></i>
+                        ¿Duele el diseño de sonrisa?
+                        <i class="fas fa-chevron-down icon-chev"></i>
+                    </button>
+                    <div class="lp-faq__a">
+                        <p>No. Los tratamientos estéticos como blanqueamiento y carillas son <strong>indoloros o con mínimas molestias</strong> completamente manejables. Antes de cualquier procedimiento te explicamos todo en detalle para que llegues tranquilo/a.</p>
+                    </div>
+                </div>
+                <div class="lp-faq__item lp-fade lp-fade-delay-1">
+                    <button class="lp-faq__q" aria-expanded="false">
+                        <i class="fas fa-circle-question icon-q"></i>
+                        ¿Cuántas sesiones necesito?
+                        <i class="fas fa-chevron-down icon-chev"></i>
+                    </button>
+                    <div class="lp-faq__a">
+                        <p>Depende del tratamiento. Un blanqueamiento puede resolverse en <strong>1–2 sesiones</strong>. Un diseño de sonrisa completo puede tomar algunas semanas. En la evaluación inicial te damos el plan exacto según tu caso, sin compromisos.</p>
+                    </div>
+                </div>
+                <div class="lp-faq__item lp-fade lp-fade-delay-2">
+                    <button class="lp-faq__q" aria-expanded="false">
+                        <i class="fas fa-circle-question icon-q"></i>
+                        ¿Tienen facilidades de pago?
+                        <i class="fas fa-chevron-down icon-chev"></i>
+                    </button>
+                    <div class="lp-faq__a">
+                        <p>Sí. Trabajamos con <strong>opciones de financiamiento</strong> para que el costo no sea un obstáculo. Muchos de nuestros pacientes pagan en cuotas cómodas. Consúltanos sin ningún compromiso.</p>
+                    </div>
+                </div>
+                <div class="lp-faq__item lp-fade">
+                    <button class="lp-faq__q" aria-expanded="false">
+                        <i class="fas fa-circle-question icon-q"></i>
+                        ¿Cuánto cuesta la consulta de evaluación?
+                        <i class="fas fa-chevron-down icon-chev"></i>
+                    </button>
+                    <div class="lp-faq__a">
+                        <p>La evaluación inicial es para revisar tu caso y darte un presupuesto <strong>transparente, sin letra chica y sin sorpresas</strong>. Escríbenos y te contamos todo antes de que vengas.</p>
+                    </div>
+                </div>
+                <div class="lp-faq__item lp-fade lp-fade-delay-1">
+                    <button class="lp-faq__q" aria-expanded="false">
+                        <i class="fas fa-circle-question icon-q"></i>
+                        ¿Atienden los sábados?
+                        <i class="fas fa-chevron-down icon-chev"></i>
+                    </button>
+                    <div class="lp-faq__a">
+                        <p>Sí. Atendemos <strong>lunes a viernes de 9:00 a 19:00 y sábados de 9:00 a 14:00</strong>, para que puedas venir sin interferir con tu trabajo o tus compromisos entre semana.</p>
+                    </div>
+                </div>
+                <div class="lp-faq__item lp-fade lp-fade-delay-2">
+                    <button class="lp-faq__q" aria-expanded="false">
+                        <i class="fas fa-circle-question icon-q"></i>
+                        ¿Dónde están ubicados?
+                        <i class="fas fa-chevron-down icon-chev"></i>
+                    </button>
+                    <div class="lp-faq__a">
+                        <p>En <strong>Avenida San Martín 0795, Temuco</strong>, La Araucanía. Fácil acceso en auto o locomoción colectiva.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lp-faq__cta lp-fade">
+                <a href="https://wa.me/56967270623?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20San%20Martin%20Dent"
+                   class="btn btn--outline" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> Tengo más preguntas — escríbenos
+                </a>
+                <span class="lp-cta-sub"><i class="fas fa-check-circle"></i> Respondemos en minutos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="lp-section lp-section--deep lp-cta-final">
+        <div class="lp-cta-final__inner">
+            <span class="lp-cta-final__eyebrow lp-fade">El primer paso es el más fácil</span>
+            <h2 class="lp-cta-final__title lp-fade lp-fade-delay-1">Tu sonrisa te está<br><span>esperando en Temuco</span></h2>
+            <p class="lp-cta-final__sub lp-fade lp-fade-delay-2">Escríbenos hoy por WhatsApp. Te respondemos rápido, te explicamos todo y agendas cuando puedas — sin presión, sin compromiso.</p>
+            <div class="lp-cta-final__btns lp-fade lp-fade-delay-3">
+                <a href="https://wa.me/56967270623?text=Hola%2C%20quiero%20agendar%20mi%20consulta%20de%20evaluaci%C3%B3n%20en%20San%20Martin%20Dent"
+                   class="btn btn--whatsapp btn--xl" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> Agendar mi evaluación — es gratis
+                </a>
+                <span class="lp-cta-sub"><i class="fas fa-check-circle"></i> Sin costo &nbsp;·&nbsp; <i class="fas fa-check-circle"></i> Sin compromiso &nbsp;·&nbsp; <i class="fas fa-check-circle"></i> Respondemos hoy</span>
+            </div>
+            <div class="lp-cta-final__meta lp-fade lp-fade-delay-4">
+                <span><i class="fas fa-map-marker-alt"></i> Avenida San Martín 0795, Temuco</span>
+                <span><i class="fas fa-clock"></i> Lun–Vie 9:00–19:00 | Sáb 9:00–14:00</span>
+                <span><i class="fas fa-star"></i> 5.0 en Google</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER MÍNIMO ===== -->
+    <footer class="lp-footer">
+        <div class="lp-footer__inner">
+            <img src="assets/logos-icono.png" alt="San Martin Dent" class="lp-footer__logo">
+            <p class="lp-footer__copy">&copy; 2026 San Martin Dent &mdash; Todos los derechos reservados.</p>
+            <a href="index.html" class="lp-footer__link">Ver sitio completo</a>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/56967270623?text=Hola%2C%20quiero%20agendar%20mi%20consulta%20en%20San%20Martin%20Dent"
+       class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+        <span class="pulse"></span>
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- STICKY CTA — solo móvil -->
+    <div class="lp-sticky-cta" id="lpStickyCta">
+        <div class="lp-sticky-cta__text">
+            <strong>San Martin Dent · Temuco</strong>
+            Consulta de evaluación sin costo
+        </div>
+        <a href="https://wa.me/56967270623?text=Hola%2C%20quiero%20agendar%20mi%20consulta%20en%20San%20Martin%20Dent"
+           class="btn btn--whatsapp" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Agendar
+        </a>
+    </div>
+
+    <script>
+        // Fade-in con IntersectionObserver
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.lp-fade').forEach(el => observer.observe(el));
+
+        // FAQ colapsable
+        document.querySelectorAll('.lp-faq__q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.lp-faq__item');
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.lp-faq__item.open').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+                btn.setAttribute('aria-expanded', !isOpen);
+            });
+        });
+
+        // Sticky CTA móvil: aparece después del hero
+        const hero = document.querySelector('.lp-hero');
+        const stickyCta = document.getElementById('lpStickyCta');
+        const stickyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        if (hero && stickyCta) stickyObserver.observe(hero);
+    </script>
+</body>
+</html>
