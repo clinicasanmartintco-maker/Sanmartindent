@@ -858,3 +858,42 @@ ul { list-style: none; }
     .article__stakes { padding: 1.25rem 1.25rem; }
 }
 
+/* ===== VIDEOS TRANSFORMACIONES (index.html) ===== */
+.shorts-section {
+    background: var(--bg);
+    padding: 5rem 1.5rem;
+    text-align: center;
+}
+.shorts__label {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font-title); font-size: 0.76rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.65rem;
+}
+.shorts__grid {
+    display: flex; justify-content: center; gap: 3rem;
+    margin-top: 3rem; flex-wrap: wrap;
+}
+.shorts__item {
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+}
+.shorts__frame {
+    position: relative;
+    width: 240px;
+    aspect-ratio: 9/16;
+    border-radius: 18px; overflow: hidden;
+    box-shadow: 0 0 50px rgba(241,159,5,0.2), 0 20px 56px rgba(0,0,0,0.5);
+    border: 2px solid rgba(241,159,5,0.28);
+}
+.shorts__frame iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+}
+.shorts__caption {
+    font-family: var(--font-title); font-size: 0.85rem; font-weight: 600;
+    color: var(--text-muted);
+}
+@media (max-width: 600px) {
+    .shorts__grid { gap: 1.5rem; }
+    .shorts__frame { width: 155px; }
+}
+
