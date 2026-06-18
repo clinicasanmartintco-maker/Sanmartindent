@@ -32,15 +32,16 @@ Fonts loaded from Google Fonts CDN: **Montserrat** (headings/UI) + **Open Sans**
 
 ## Architecture
 
-Two pages share one stylesheet and one script:
+Four files form the site:
 
-- `index.html` — single-page layout with anchor sections: `#inicio`, `#servicios`, `#nosotros`, `#contacto`
-- `equipo.html` — separate team page; links back to `index.html#*` anchors
-- `styles.css` — all styles for both pages; team-page styles are under the `/* ===== TEAM PAGE ===== */` block
-- `script.js` — mobile hamburger menu, scroll-based active nav link, Intersection Observer fade-in for `.service__card`, `.team__card`, `.contact__item`
-- `assets/` — logo and doctor photos go here (`logo.png` required; doctor photos are optional, referenced by HTML comments in `equipo.html`)
+- `index.html` — página principal, single-page con secciones: `#inicio`, `#servicios`, `#nosotros`, `#contacto`
+- `landing.html` — **landing page de alta conversión** (ver sección dedicada más abajo); NO usa nav principal
+- `equipo.html` — página de equipo; enlaza de vuelta a `index.html#*`
+- `styles.css` — estilos compartidos entre `index.html` y `equipo.html`; estilos del equipo bajo `/* ===== TEAM PAGE ===== */`
+- `script.js` — hamburger móvil, nav activo por scroll, Intersection Observer fade-in para `.service__card`, `.team__card`, `.contact__item`
+- `assets/` — logo (`logo.png` requerido), fotos de doctores, imágenes del blog y landing
 
-CSS follows BEM naming: `.block__element--modifier`. Sections alternate between `--bg` and `--bg-light` backgrounds. The `.container` class (max-width 1100px, auto margins) centers content on every section.
+CSS sigue BEM: `.block__element--modifier`. Secciones alternan entre `--bg` y `--bg-light`. La clase `.container` (max-width 1100px, márgenes auto) centra el contenido en cada sección.
 
 ## Adding a new doctor card (equipo.html)
 
@@ -60,6 +61,51 @@ Copy this block inside `.team__grid` under "Equipo Clínico":
 ```
 
 If no photo is available yet, replace `<img>` with `<i class="fas fa-user-doctor"></i>`.
+
+## Landing page de alta conversión (`landing.html`) — PIEZA CLAVE
+
+URL en producción: `https://sanmartindent.cl/landing.html`
+
+Esta página es la pieza central de captación de pacientes. Está optimizada para conversión directa vía WhatsApp, **no tiene navegación principal** y tiene estilos propios embebidos en `<style>` (prefijados con `.lp-`).
+
+### Estructura de secciones (en orden)
+
+| # | Sección | Clase raíz | Propósito |
+|---|---|---|---|
+| 1 | Announcement bar | `.lp-announce` | Urgencia — "respondemos en menos de 1 hora" |
+| 2 | Header mínimo sticky | `.lp-header` | Logo + teléfono + CTA "Agendar hora" |
+| 3 | Hero | `.lp-hero` | H1 "¿Cuánto tiempo llevas ocultando tu sonrisa?" + CTA WhatsApp principal |
+| 4 | Stats bar | `.lp-stats` | 4 pruebas sociales: ★5.0 / 3 doctores / Lun–Sáb / dirección |
+| 5 | Problema | `.lp-problem__grid` | 6 puntos de dolor (checkboxes rojos) + resolución dorada |
+| 6 | Cómo funciona | `.lp-steps` | 3 pasos: WhatsApp → evaluación → plan personalizado |
+| 7 | Servicios | `.lp-services__featured` + `.lp-services__grid` | Diseño de sonrisa (estrella) + Implantes + Integral + Ortodoncia |
+| 8 | Equipo | `.lp-team__grid` + `.lp-founder` | 3 doctores fundadores + cita del Dr. San Martín |
+| 9 | Testimonios | `.lp-test__grid` | 3 reseñas reales de Google |
+| 10 | FAQ | `.lp-faq__list` | 6 preguntas colapsables (JS inline) |
+| 11 | CTA Final | `.lp-cta-final` | Cierre emocional + botón WhatsApp XL |
+| 12 | Footer mínimo | `.lp-footer` | Logo + copyright + enlace "Ver sitio completo" |
+| 13 | WhatsApp flotante | `.whatsapp-float` | Botón fijo (igual que index.html) |
+| 14 | Sticky CTA móvil | `.lp-sticky-cta` | Aparece en móvil al salir del hero |
+
+### Decisiones de diseño que NO cambiar sin razón explícita
+
+- **Sin nav principal** — la landing no tiene menú. Elimina distracciones y mantiene al usuario en el funnel.
+- **Estilos embebidos** — el `<style>` dentro de `landing.html` es intencional; evita que cambios en `styles.css` rompan la landing.
+- **CTA siempre WhatsApp** — no hay formulario. La conversión es 100% por WhatsApp (`wa.me/56967270623`).
+- **Animaciones `.lp-fade`** — fade-in vía IntersectionObserver inline en el `<script>` al final del body.
+- **Diseño de sonrisa como servicio estrella** — `.lp-services__featured` con ribbon "Servicio estrella". Es el principal foco de conversión.
+
+### Cómo actualizar testimonios
+
+Editar las `.lp-test__card` dentro de `#testimonios`. Cada card tiene: estrellas, texto en cursiva, nombre del autor e ícono de Google.
+
+### Cómo agregar una pregunta al FAQ
+
+Copiar un `.lp-faq__item` dentro de `.lp-faq__list`. El JS colapsable ya maneja cualquier número de ítems automáticamente.
+
+### Variables CSS usadas de `styles.css`
+
+La landing hereda todas las variables del `:root` de `styles.css`: `--bg`, `--bg-light`, `--bg-card`, `--bg-deep`, `--accent`, `--text`, `--text-muted`, `--font-title`, `--font-elegant`, `--radius`, `--transition`.
 
 ## Adding a new service (index.html)
 

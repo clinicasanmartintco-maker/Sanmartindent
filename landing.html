@@ -22,14 +22,9 @@
     <link rel="icon" href="assets/logo.png">
 
     <style>
-        /* ===== LANDING PAGE — alta conversión ===== */
+        /* ===== LANDING PAGE — alta conversión v2 ===== */
 
-        /* Fade-in base para animaciones */
-        .lp-fade {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.55s ease-out, transform 0.55s ease-out;
-        }
+        .lp-fade { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease-out, transform 0.55s ease-out; }
         .lp-fade.visible { opacity: 1; transform: translateY(0); }
         .lp-fade-delay-1 { transition-delay: 0.1s; }
         .lp-fade-delay-2 { transition-delay: 0.2s; }
@@ -40,7 +35,7 @@
         .lp-announce {
             background: linear-gradient(90deg, rgba(241,159,5,0.18), rgba(241,159,5,0.1), rgba(241,159,5,0.18));
             border-bottom: 1px solid rgba(241,159,5,0.35);
-            text-align: center; padding: 0.65rem 1.5rem;
+            text-align: center; padding: 0.65rem 3rem;
             font-family: var(--font-title); font-size: 0.8rem;
             font-weight: 700; color: var(--text);
             position: relative; z-index: 1001;
@@ -67,32 +62,41 @@
             height: 66px;
         }
         .lp-header__logo { height: 42px; width: auto; }
-        .lp-header__phone {
-            display: flex; align-items: center; gap: 0.45rem;
-            color: var(--text-muted); font-family: var(--font-title);
-            font-size: 0.8rem; font-weight: 600;
+        .lp-header__proof {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: rgba(241,159,5,0.08); border: 1px solid rgba(241,159,5,0.25);
+            border-radius: 999px; padding: 0.35rem 1rem;
+            font-family: var(--font-title); font-size: 0.78rem; font-weight: 700;
+            color: var(--text-muted);
         }
-        .lp-header__phone i { color: #25D366; }
+        .lp-header__proof .stars { color: var(--accent); letter-spacing: 1px; }
 
-        /* Hero */
+        /* ===== HERO SPLIT ===== */
         .lp-hero {
             min-height: 100vh;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            text-align: center;
-            padding: 5rem 1.5rem 5rem;
-            background-image: url('assets/clinica-exterior.jpg');
-            background-size: cover; background-position: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: linear-gradient(160deg, #081220 0%, #0f1d2f 100%);
             position: relative;
+            overflow: hidden;
         }
-        .lp-hero::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(160deg, rgba(8,18,32,0.93) 0%, rgba(15,29,47,0.86) 100%);
-            z-index: 0;
+        .lp-hero::after {
+            content: '';
+            position: absolute;
+            top: -30%; right: -10%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(241,159,5,0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
-        .lp-hero__inner {
+        .lp-hero__left {
+            display: flex; flex-direction: column; justify-content: center;
+            padding: 7rem 3.5rem 5rem 2rem;
             position: relative; z-index: 1;
-            max-width: 800px; margin: 0 auto;
+        }
+        .lp-hero__right {
+            display: flex; align-items: center; justify-content: center;
+            padding: 7rem 2rem 5rem 1rem;
+            position: relative; z-index: 1;
         }
         .lp-hero__eyebrow {
             display: inline-flex; align-items: center; gap: 0.5rem;
@@ -101,20 +105,21 @@
             font-family: var(--font-title); font-size: 0.76rem; font-weight: 700;
             letter-spacing: 0.1em; text-transform: uppercase;
             padding: 0.4rem 1.1rem; margin-bottom: 1.75rem;
+            width: fit-content;
         }
         .lp-hero__title {
             font-family: var(--font-title); font-weight: 800;
-            font-size: clamp(2.2rem, 5.5vw, 4rem);
-            line-height: 1.1; margin-bottom: 0.75rem; color: var(--text);
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            line-height: 1.1; margin-bottom: 0.85rem; color: var(--text);
             letter-spacing: -0.5px;
         }
         .lp-hero__title span { color: var(--accent); text-shadow: 0 0 30px rgba(241,159,5,0.4); }
         .lp-hero__subtitle {
             font-family: var(--font-elegant); font-style: italic;
-            font-size: 1.15rem; color: var(--text-muted);
-            line-height: 1.75; max-width: 580px; margin: 0 auto 2.25rem;
+            font-size: 1.05rem; color: var(--text-muted);
+            line-height: 1.75; margin-bottom: 2.25rem; max-width: 480px;
         }
-        .lp-hero__cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 2.25rem; }
+        .lp-hero__cta-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; margin-bottom: 2rem; }
         .btn--xl { padding: 1.15rem 2.8rem; font-size: 1.05rem; }
         .lp-cta-sub {
             font-family: var(--font-title); font-size: 0.76rem; font-weight: 600;
@@ -123,18 +128,37 @@
         .lp-cta-sub i { color: var(--accent); margin-right: 0.2rem; }
         .lp-hero__proof {
             display: inline-flex; align-items: center;
-            gap: 0.85rem; flex-wrap: wrap; justify-content: center;
+            gap: 0.85rem; flex-wrap: wrap;
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(241,159,5,0.2);
             border-radius: 999px; padding: 0.6rem 1.5rem;
-            font-family: var(--font-title); font-size: 0.8rem;
-            color: var(--text-muted);
+            font-family: var(--font-title); font-size: 0.78rem;
+            color: var(--text-muted); width: fit-content;
         }
         .lp-hero__proof .stars { color: var(--accent); letter-spacing: 2px; }
         .lp-hero__proof .sep { opacity: 0.25; }
-        .lp-hero__scroll {
-            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-            color: var(--accent); font-size: 1.2rem; animation: bounce 2s infinite; z-index: 1;
+
+        /* Video embed en hero */
+        .lp-hero__video-wrap {
+            position: relative;
+            width: 280px;
+            aspect-ratio: 9/16;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(241,159,5,0.25), 0 30px 80px rgba(0,0,0,0.6);
+            border: 2px solid rgba(241,159,5,0.3);
+        }
+        .lp-hero__video-wrap iframe {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; border: none;
+        }
+        .lp-hero__video-badge {
+            position: absolute; top: 14px; left: 14px;
+            background: var(--accent); color: var(--bg-deep);
+            font-family: var(--font-title); font-size: 0.65rem; font-weight: 800;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 0.3rem 0.75rem; border-radius: 999px;
+            z-index: 2; pointer-events: none;
         }
 
         /* Stats bar */
@@ -148,20 +172,10 @@
             display: grid; grid-template-columns: repeat(4, 1fr);
             gap: 0; text-align: center;
         }
-        .lp-stat {
-            display: flex; flex-direction: column; gap: 0.2rem;
-            padding: 0 1.5rem;
-        }
+        .lp-stat { display: flex; flex-direction: column; gap: 0.2rem; padding: 0 1.5rem; }
         .lp-stat + .lp-stat { border-left: 1px solid rgba(241,159,5,0.15); }
-        .lp-stat__num {
-            font-family: var(--font-title); font-size: 1.65rem;
-            font-weight: 800; color: var(--accent); line-height: 1;
-        }
-        .lp-stat__label {
-            font-size: 0.77rem; color: var(--text-muted);
-            font-family: var(--font-title); font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.06em;
-        }
+        .lp-stat__num { font-family: var(--font-title); font-size: 1.65rem; font-weight: 800; color: var(--accent); line-height: 1; }
+        .lp-stat__label { font-size: 0.77rem; color: var(--text-muted); font-family: var(--font-title); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
 
         /* Sección base */
         .lp-section { padding: 5.5rem 1.5rem; }
@@ -173,8 +187,202 @@
         .lp-label {
             font-family: var(--font-title); font-size: 0.76rem; font-weight: 700;
             letter-spacing: 0.15em; text-transform: uppercase;
-            color: var(--accent); margin-bottom: 0.65rem; text-align: center;
+            color: var(--accent); margin-bottom: 0.65rem; text-align: center; display: block;
+        }
+
+        /* ===== SECCIÓN VÍDEOS ===== */
+        .lp-videos__grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 3rem; margin-top: 3rem; align-items: center;
+        }
+        .lp-video__card {
+            display: flex; flex-direction: column; align-items: center; gap: 1.25rem;
+        }
+        .lp-video__frame {
+            position: relative;
+            width: 100%; max-width: 280px;
+            aspect-ratio: 9/16;
+            border-radius: 20px; overflow: hidden;
+            box-shadow: 0 0 50px rgba(241,159,5,0.2), 0 20px 60px rgba(0,0,0,0.5);
+            border: 2px solid rgba(241,159,5,0.25);
+        }
+        .lp-video__frame iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+        .lp-video__label {
+            text-align: center;
+        }
+        .lp-video__label h3 {
+            font-family: var(--font-title); font-size: 1.1rem; font-weight: 700;
+            color: var(--text); margin-bottom: 0.35rem;
+        }
+        .lp-video__label p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; }
+        .lp-video__num {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: var(--accent); color: var(--bg-deep);
+            font-family: var(--font-title); font-weight: 800; font-size: 0.9rem;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 0.5rem; box-shadow: 0 0 16px rgba(241,159,5,0.4);
+        }
+
+        /* ===== CASOS DE ÉXITO ===== */
+        .lp-casos__intro {
+            text-align: center; color: var(--text-muted);
+            font-family: var(--font-elegant); font-style: italic;
+            font-size: 1.05rem; max-width: 620px; margin: 0 auto 3.5rem;
+        }
+
+        /* Featured cases: 2x2 grid con slider */
+        .lp-casos-featured {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1.5rem; margin-bottom: 4rem;
+        }
+        .lp-ba-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(241,159,5,0.18);
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .lp-ba-card:hover { transform: translateY(-4px); box-shadow: 0 16px 56px rgba(241,159,5,0.15); }
+        .lp-ba-card__badge {
+            background: linear-gradient(90deg, rgba(241,159,5,0.15), rgba(241,159,5,0.05));
+            border-bottom: 1px solid rgba(241,159,5,0.2);
+            padding: 0.6rem 1.1rem;
+            display: flex; align-items: center; gap: 0.5rem;
+            font-family: var(--font-title); font-size: 0.72rem; font-weight: 800;
+            color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em;
+        }
+        .lp-ba-card__badge i { font-size: 0.75rem; }
+
+        /* Slider antes/después */
+        .ba-slider {
+            position: relative; overflow: hidden; cursor: ew-resize;
+            user-select: none; -webkit-user-select: none;
+            aspect-ratio: 1/1;
+        }
+        .ba-slider img {
+            display: block; width: 100%; height: 100%;
+            object-fit: cover; pointer-events: none;
+        }
+        .ba-after {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            clip-path: inset(0 0 0 50%);
+            transition: clip-path 0.05s;
+        }
+        .ba-after img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .ba-handle {
+            position: absolute; top: 0; bottom: 0; left: 50%;
+            width: 3px; background: #fff;
+            transform: translateX(-50%); pointer-events: none; z-index: 3;
+        }
+        .ba-handle::before, .ba-handle::after {
+            content: '';
+            position: absolute; left: 50%; transform: translateX(-50%);
+            width: 36px; height: 36px; border-radius: 50%;
+            background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+        .ba-handle::before { top: calc(50% - 18px); }
+        .ba-handle-arrows {
+            position: absolute; top: calc(50% - 7px); left: 50%;
+            transform: translateX(-50%);
+            z-index: 4; pointer-events: none;
+            display: flex; align-items: center; gap: 2px;
+            color: var(--bg-deep); font-size: 0.7rem; font-weight: 900;
+        }
+        .ba-labels {
+            position: absolute; bottom: 10px; left: 0; right: 0;
+            display: flex; justify-content: space-between;
+            padding: 0 12px; pointer-events: none; z-index: 5;
+        }
+        .ba-labels span {
+            font-family: var(--font-title); font-size: 0.68rem; font-weight: 800;
+            letter-spacing: 0.1em; padding: 0.25rem 0.6rem; border-radius: 999px;
+        }
+        .ba-label-antes { background: rgba(220,50,50,0.85); color: #fff; }
+        .ba-label-despues { background: rgba(241,159,5,0.9); color: var(--bg-deep); }
+
+        /* Hint de arrastrar */
+        .ba-drag-hint {
+            position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.6); color: #fff;
+            font-family: var(--font-title); font-size: 0.65rem; font-weight: 700;
+            padding: 0.2rem 0.7rem; border-radius: 999px; letter-spacing: 0.06em;
+            white-space: nowrap; pointer-events: none; z-index: 5;
+            opacity: 1; transition: opacity 0.5s;
+        }
+        .ba-slider.interacted .ba-drag-hint { opacity: 0; }
+
+        /* Carrusel todos los casos */
+        .lp-carousel-wrap {
+            position: relative;
+        }
+        .lp-carousel-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+        .lp-carousel-header h3 {
+            font-family: var(--font-title); font-size: 1rem; font-weight: 700; color: var(--text);
+        }
+        .lp-carousel-nav { display: flex; gap: 0.5rem; }
+        .lp-carousel-btn {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(241,159,5,0.1); border: 1px solid rgba(241,159,5,0.3);
+            color: var(--accent); font-size: 1.1rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .lp-carousel-btn:hover { background: rgba(241,159,5,0.2); border-color: var(--accent); }
+        .lp-carousel {
+            display: flex; gap: 1rem; overflow-x: auto;
+            scroll-behavior: smooth; scroll-snap-type: x mandatory;
+            padding-bottom: 0.5rem;
+            -ms-overflow-style: none; scrollbar-width: none;
+        }
+        .lp-carousel::-webkit-scrollbar { display: none; }
+        .lp-carousel__item {
+            flex: 0 0 calc(25% - 0.75rem);
+            scroll-snap-align: start;
+            background: var(--bg-card);
+            border: 1px solid rgba(241,159,5,0.15);
+            border-radius: 12px; overflow: hidden;
+            position: relative;
+        }
+        .lp-carousel__pair {
+            display: grid; grid-template-columns: 1fr 1fr;
+        }
+        .lp-carousel__pair-img {
+            position: relative; aspect-ratio: 1/1; overflow: hidden;
+        }
+        .lp-carousel__pair-img img {
+            width: 100%; height: 100%; object-fit: cover;
             display: block;
+        }
+        .lp-carousel__pair-label {
+            position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);
+            font-family: var(--font-title); font-size: 0.55rem; font-weight: 800;
+            letter-spacing: 0.08em; padding: 0.15rem 0.5rem; border-radius: 999px;
+            white-space: nowrap;
+        }
+        .lp-carousel__pair-label--antes { background: rgba(220,50,50,0.85); color: #fff; }
+        .lp-carousel__pair-label--despues { background: rgba(241,159,5,0.9); color: var(--bg-deep); }
+        .lp-carousel__case-num {
+            text-align: center; padding: 0.5rem;
+            font-family: var(--font-title); font-size: 0.72rem; font-weight: 700;
+            color: var(--text-muted);
+        }
+        .lp-carousel__item--featured {
+            border-color: rgba(241,159,5,0.45);
+            box-shadow: 0 0 20px rgba(241,159,5,0.12);
+        }
+        .lp-carousel__featured-badge {
+            position: absolute; top: 6px; right: 6px; z-index: 2;
+            background: var(--accent); color: var(--bg-deep);
+            font-family: var(--font-title); font-size: 0.55rem; font-weight: 800;
+            padding: 0.15rem 0.45rem; border-radius: 999px; letter-spacing: 0.06em;
         }
 
         /* Problema */
@@ -193,10 +401,8 @@
             gap: 0.9rem; margin-bottom: 2.75rem;
         }
         .lp-problem__item {
-            background: rgba(220,50,50,0.06);
-            border: 1px solid rgba(220,50,50,0.18);
-            border-left: 3px solid rgba(220,80,80,0.55);
-            border-radius: var(--radius-small);
+            background: rgba(220,50,50,0.06); border: 1px solid rgba(220,50,50,0.18);
+            border-left: 3px solid rgba(220,80,80,0.55); border-radius: var(--radius-small);
             padding: 1.1rem 1.35rem;
             display: flex; align-items: flex-start; gap: 0.8rem;
             color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;
@@ -204,10 +410,8 @@
         .lp-problem__item i { color: rgba(220,80,80,0.75); flex-shrink: 0; margin-top: 2px; }
         .lp-problem__resolution {
             background: linear-gradient(135deg, rgba(241,159,5,0.1), rgba(241,159,5,0.04));
-            border: 1px solid rgba(241,159,5,0.28);
-            border-radius: var(--radius);
-            padding: 2.25rem 2.5rem;
-            text-align: center;
+            border: 1px solid rgba(241,159,5,0.28); border-radius: var(--radius);
+            padding: 2.25rem 2.5rem; text-align: center;
         }
         .lp-problem__resolution p {
             font-size: 1.15rem; color: var(--text); line-height: 1.7;
@@ -227,23 +431,17 @@
             opacity: 0.3; z-index: 0;
         }
         .lp-step {
-            background: var(--bg-card);
-            border: 1px solid rgba(241,159,5,0.15);
+            background: var(--bg-card); border: 1px solid rgba(241,159,5,0.15);
             border-radius: var(--radius); padding: 2rem 1.5rem;
             text-align: center; position: relative; z-index: 1;
         }
         .lp-step__num {
-            width: 46px; height: 46px;
-            background: var(--accent); color: var(--bg-deep);
+            width: 46px; height: 46px; background: var(--accent); color: var(--bg-deep);
             font-family: var(--font-title); font-weight: 800; font-size: 1.1rem;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 1.25rem;
-            box-shadow: 0 0 20px rgba(241,159,5,0.45);
+            margin: 0 auto 1.25rem; box-shadow: 0 0 20px rgba(241,159,5,0.45);
         }
-        .lp-step h3 {
-            font-family: var(--font-title); font-weight: 700;
-            font-size: 1rem; margin-bottom: 0.6rem; color: var(--text);
-        }
+        .lp-step h3 { font-family: var(--font-title); font-weight: 700; font-size: 1rem; margin-bottom: 0.6rem; color: var(--text); }
         .lp-step p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; }
         .lp-step__badge {
             display: inline-block; margin-top: 0.85rem;
@@ -255,10 +453,8 @@
 
         /* Servicios */
         .lp-services__featured {
-            background: var(--bg-card);
-            border: 2px solid var(--accent);
-            border-radius: var(--radius);
-            padding: 2.75rem;
+            background: var(--bg-card); border: 2px solid var(--accent);
+            border-radius: var(--radius); padding: 2.75rem;
             display: grid; grid-template-columns: auto 1fr;
             gap: 3rem; align-items: center;
             margin-bottom: 1.75rem;
@@ -270,8 +466,7 @@
             background: var(--accent); color: var(--bg-deep);
             font-family: var(--font-title); font-size: 0.65rem; font-weight: 800;
             letter-spacing: 0.12em; padding: 0.3rem 3.2rem;
-            transform: rotate(45deg); transform-origin: center;
-            text-transform: uppercase;
+            transform: rotate(45deg); transform-origin: center; text-transform: uppercase;
         }
         .lp-services__featured-icon {
             width: 110px; height: 110px; flex-shrink: 0;
@@ -279,66 +474,36 @@
             border: 2px solid rgba(241,159,5,0.25);
             display: flex; align-items: center; justify-content: center;
         }
-        .lp-services__featured-text h3 {
-            font-family: var(--font-title); font-size: 1.65rem;
-            font-weight: 800; margin-bottom: 0.85rem; color: var(--text);
-        }
+        .lp-services__featured-text h3 { font-family: var(--font-title); font-size: 1.65rem; font-weight: 800; margin-bottom: 0.85rem; color: var(--text); }
         .lp-services__featured-text h3 span { color: var(--accent); }
-        .lp-services__featured-text > p {
-            color: var(--text-muted); line-height: 1.8; margin-bottom: 1.25rem; font-size: 0.98rem;
-        }
-        .lp-feat-list {
-            list-style: none; display: flex; flex-direction: column;
-            gap: 0.45rem; margin-bottom: 1.75rem;
-        }
-        .lp-feat-list li {
-            display: flex; align-items: center; gap: 0.6rem;
-            color: var(--text-muted); font-size: 0.92rem;
-        }
+        .lp-services__featured-text > p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.25rem; font-size: 0.98rem; }
+        .lp-feat-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.75rem; }
+        .lp-feat-list li { display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); font-size: 0.92rem; }
         .lp-feat-list li i { color: var(--accent); flex-shrink: 0; }
-        .lp-services__grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1.1rem;
-        }
+        .lp-services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
         .lp-service__card {
-            background: var(--bg-card);
-            border: 1px solid rgba(241,159,5,0.15);
-            border-top: 3px solid rgba(241,159,5,0.35);
-            border-radius: var(--radius); padding: 1.85rem;
-            text-align: center;
+            background: var(--bg-card); border: 1px solid rgba(241,159,5,0.15);
+            border-top: 3px solid rgba(241,159,5,0.35); border-radius: var(--radius);
+            padding: 1.85rem; text-align: center;
             transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
             display: flex; flex-direction: column; align-items: center;
         }
-        .lp-service__card:hover {
-            transform: translateY(-6px); border-color: var(--accent);
-            box-shadow: 0 0 24px rgba(241,159,5,0.18);
-        }
+        .lp-service__card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 0 24px rgba(241,159,5,0.18); }
         .lp-service__icon {
             width: 60px; height: 60px; border-radius: 50%;
             background: rgba(241,159,5,0.1); border: 2px solid rgba(241,159,5,0.22);
             display: flex; align-items: center; justify-content: center;
             font-size: 1.5rem; color: var(--accent); margin-bottom: 1.1rem;
         }
-        .lp-service__card h4 {
-            font-family: var(--font-title); font-size: 0.98rem;
-            font-weight: 700; margin-bottom: 0.65rem;
-        }
-        .lp-service__card p {
-            color: var(--text-muted); font-size: 0.88rem;
-            line-height: 1.65; flex: 1; margin-bottom: 1.1rem;
-        }
+        .lp-service__card h4 { font-family: var(--font-title); font-size: 0.98rem; font-weight: 700; margin-bottom: 0.65rem; }
+        .lp-service__card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; flex: 1; margin-bottom: 1.1rem; }
 
         /* Doctores */
-        .lp-team__grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1.75rem; margin-top: 3rem;
-        }
+        .lp-team__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-top: 3rem; }
         .lp-team__card {
-            background: var(--bg-card);
-            border: 1px solid rgba(241,159,5,0.15);
-            border-top: 3px solid var(--accent);
-            border-radius: var(--radius); overflow: hidden;
-            text-align: center;
+            background: var(--bg-card); border: 1px solid rgba(241,159,5,0.15);
+            border-top: 3px solid var(--accent); border-radius: var(--radius);
+            overflow: hidden; text-align: center;
             transition: transform var(--transition), box-shadow var(--transition);
         }
         .lp-team__card:hover { transform: translateY(-6px); box-shadow: 0 0 28px rgba(241,159,5,0.18); }
@@ -348,163 +513,112 @@
         .lp-team__name { font-family: var(--font-title); font-weight: 700; font-size: 0.97rem; margin-bottom: 0.2rem; }
         .lp-team__role { color: var(--accent); font-size: 0.78rem; font-family: var(--font-title); font-weight: 600; }
         .lp-team__trust { margin-top: 2.75rem; text-align: center; }
-        .lp-team__trust p {
-            color: var(--text-muted); font-family: var(--font-elegant);
-            font-style: italic; font-size: 1.05rem; max-width: 580px; margin: 0 auto 1.5rem;
+        .lp-team__trust p { color: var(--text-muted); font-family: var(--font-elegant); font-style: italic; font-size: 1.05rem; max-width: 580px; margin: 0 auto 1.5rem; }
+
+        /* Nota del fundador */
+        .lp-founder {
+            background: var(--bg-card); border: 1px solid rgba(241,159,5,0.2);
+            border-radius: var(--radius); padding: 2.5rem;
+            display: grid; grid-template-columns: auto 1fr;
+            gap: 2.25rem; align-items: center; margin-top: 1.5rem;
         }
+        .lp-founder__avatar {
+            width: 100px; height: 100px; border-radius: 50%; overflow: hidden;
+            border: 3px solid var(--accent); box-shadow: 0 0 22px rgba(241,159,5,0.3);
+            flex-shrink: 0; background: var(--bg-light);
+        }
+        .lp-founder__avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+        .lp-founder__quote { font-family: var(--font-elegant); font-style: italic; font-size: 1.05rem; color: var(--text); line-height: 1.8; margin-bottom: 0.75rem; }
+        .lp-founder__name { font-family: var(--font-title); font-weight: 700; color: var(--accent); font-size: 0.88rem; }
 
         /* Testimonios */
-        .lp-test__grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1.4rem; margin-top: 3rem;
-        }
+        .lp-test__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 3rem; }
         .lp-test__card {
-            background: var(--bg-card);
-            border: 1px solid rgba(241,159,5,0.12);
-            border-top: 3px solid rgba(241,159,5,0.5);
-            border-radius: var(--radius); padding: 1.65rem;
-            display: flex; flex-direction: column; gap: 0.85rem;
+            background: var(--bg-card); border: 1px solid rgba(241,159,5,0.12);
+            border-top: 3px solid rgba(241,159,5,0.5); border-radius: var(--radius);
+            padding: 1.65rem; display: flex; flex-direction: column; gap: 0.85rem;
         }
         .lp-test__stars { color: var(--accent); font-size: 0.98rem; letter-spacing: 2px; }
-        .lp-test__text {
-            color: var(--text-muted); font-size: 0.92rem; line-height: 1.8;
-            font-style: italic; font-family: var(--font-elegant); flex: 1;
-        }
-        .lp-test__author {
-            display: flex; align-items: center; gap: 0.6rem;
-            font-family: var(--font-title); font-size: 0.83rem; font-weight: 700;
-        }
+        .lp-test__text { color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; font-style: italic; font-family: var(--font-elegant); flex: 1; }
+        .lp-test__author { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-title); font-size: 0.83rem; font-weight: 700; }
         .lp-test__author i { color: var(--accent); font-size: 1.35rem; }
         .lp-test__source { font-size: 0.76rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.35rem; }
         .lp-test__source i { color: #4285F4; }
         .lp-test__cta { text-align: center; margin-top: 2.75rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
         .lp-test__cta p { color: var(--text-muted); font-family: var(--font-elegant); font-style: italic; font-size: 1rem; }
 
-        /* FAQ — colapsable */
+        /* FAQ */
         .lp-faq__list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 3rem; }
-        .lp-faq__item {
-            background: var(--bg-card);
-            border: 1px solid rgba(241,159,5,0.12);
-            border-radius: var(--radius-small); overflow: hidden;
-        }
+        .lp-faq__item { background: var(--bg-card); border: 1px solid rgba(241,159,5,0.12); border-radius: var(--radius-small); overflow: hidden; }
         .lp-faq__q {
             width: 100%; background: none; border: none; cursor: pointer; padding: 1.35rem 1.5rem;
             font-family: var(--font-title); font-weight: 700; font-size: 0.97rem; color: var(--text);
-            display: flex; align-items: center; gap: 0.65rem; text-align: left;
-            transition: color var(--transition);
+            display: flex; align-items: center; gap: 0.65rem; text-align: left; transition: color var(--transition);
         }
         .lp-faq__q:hover { color: var(--accent); }
         .lp-faq__q i.icon-q { color: var(--accent); flex-shrink: 0; }
-        .lp-faq__q .icon-chev {
-            margin-left: auto; flex-shrink: 0; color: var(--text-muted);
-            transition: transform 0.3s ease; font-size: 0.85rem;
-        }
+        .lp-faq__q .icon-chev { margin-left: auto; flex-shrink: 0; color: var(--text-muted); transition: transform 0.3s ease; font-size: 0.85rem; }
         .lp-faq__item.open .icon-chev { transform: rotate(180deg); }
-        .lp-faq__a {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.35s ease, padding 0.35s ease;
-            padding: 0 1.5rem;
-        }
+        .lp-faq__a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 1.5rem; }
         .lp-faq__item.open .lp-faq__a { max-height: 200px; padding: 0 1.5rem 1.35rem; }
         .lp-faq__a p { color: var(--text-muted); font-size: 0.93rem; line-height: 1.75; margin: 0; }
         .lp-faq__a strong { color: var(--accent); }
         .lp-faq__cta { text-align: center; margin-top: 2.75rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
 
-        /* Nota del fundador */
-        .lp-founder {
-            background: var(--bg-card);
-            border: 1px solid rgba(241,159,5,0.2);
-            border-radius: var(--radius); padding: 2.5rem;
-            display: grid; grid-template-columns: auto 1fr;
-            gap: 2.25rem; align-items: center;
-            margin-top: 1.5rem;
-        }
-        .lp-founder__avatar {
-            width: 100px; height: 100px; border-radius: 50%; overflow: hidden;
-            border: 3px solid var(--accent);
-            box-shadow: 0 0 22px rgba(241,159,5,0.3);
-            flex-shrink: 0;
-            background: var(--bg-light);
-        }
-        .lp-founder__avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-        .lp-founder__quote {
-            font-family: var(--font-elegant); font-style: italic;
-            font-size: 1.05rem; color: var(--text); line-height: 1.8;
-            margin-bottom: 0.75rem;
-        }
-        .lp-founder__name { font-family: var(--font-title); font-weight: 700; color: var(--accent); font-size: 0.88rem; }
-
         /* CTA Final */
-        .lp-cta-final {
-            text-align: center; position: relative; overflow: hidden;
-        }
-        .lp-cta-final::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse at center, rgba(241,159,5,0.09) 0%, transparent 65%);
-        }
+        .lp-cta-final { text-align: center; position: relative; overflow: hidden; }
+        .lp-cta-final::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(241,159,5,0.09) 0%, transparent 65%); }
         .lp-cta-final__inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
         .lp-cta-final__eyebrow { font-family: var(--font-title); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: block; }
-        .lp-cta-final__title {
-            font-family: var(--font-title); font-weight: 800;
-            font-size: clamp(1.8rem, 4vw, 2.75rem);
-            margin-bottom: 1rem; color: var(--text); line-height: 1.15;
-        }
+        .lp-cta-final__title { font-family: var(--font-title); font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.75rem); margin-bottom: 1rem; color: var(--text); line-height: 1.15; }
         .lp-cta-final__title span { color: var(--accent); }
-        .lp-cta-final__sub {
-            color: var(--text-muted); font-size: 1.03rem;
-            margin-bottom: 2.25rem; line-height: 1.65;
-            font-family: var(--font-elegant); font-style: italic;
-        }
+        .lp-cta-final__sub { color: var(--text-muted); font-size: 1.03rem; margin-bottom: 2.25rem; line-height: 1.65; font-family: var(--font-elegant); font-style: italic; }
         .lp-cta-final__btns { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
-        .lp-cta-final__meta {
-            margin-top: 2.25rem;
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem;
-            font-family: var(--font-title); font-size: 0.8rem; color: var(--text-muted);
-        }
+        .lp-cta-final__meta { margin-top: 2.25rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; font-family: var(--font-title); font-size: 0.8rem; color: var(--text-muted); }
         .lp-cta-final__meta span { display: flex; align-items: center; gap: 0.3rem; }
         .lp-cta-final__meta i { color: var(--accent); }
 
         /* Footer mínimo */
-        .lp-footer {
-            padding: 2rem 1.5rem;
-            background: var(--bg-deep);
-            border-top: 1px solid rgba(241,159,5,0.12);
-            text-align: center;
-        }
-        .lp-footer__inner {
-            max-width: 1100px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: center;
-            flex-direction: column; gap: 0.5rem;
-        }
+        .lp-footer { padding: 2rem 1.5rem; background: var(--bg-deep); border-top: 1px solid rgba(241,159,5,0.12); text-align: center; }
+        .lp-footer__inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; }
         .lp-footer__logo { height: 46px; width: auto; }
         .lp-footer__copy { color: var(--text-muted); font-size: 0.78rem; }
         .lp-footer__link { color: var(--accent); font-size: 0.78rem; font-family: var(--font-title); font-weight: 600; }
 
-        /* Sticky CTA — móvil (aparece al hacer scroll) */
+        /* Sticky CTA móvil */
         .lp-sticky-cta {
-            display: none;
-            position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
+            display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
             background: rgba(10, 22, 38, 0.97); backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(241,159,5,0.25);
-            padding: 0.85rem 1.25rem;
-            align-items: center; justify-content: space-between;
-            gap: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.35s ease;
+            border-top: 1px solid rgba(241,159,5,0.25); padding: 0.85rem 1.25rem;
+            align-items: center; justify-content: space-between; gap: 1rem;
+            transform: translateY(100%); transition: transform 0.35s ease;
         }
-        .lp-sticky-cta.visible {
-            display: flex;
-            transform: translateY(0);
-        }
-        .lp-sticky-cta__text {
-            font-family: var(--font-title); font-size: 0.8rem;
-            color: var(--text-muted); line-height: 1.3;
-        }
+        .lp-sticky-cta.visible { display: flex; transform: translateY(0); }
+        .lp-sticky-cta__text { font-family: var(--font-title); font-size: 0.8rem; color: var(--text-muted); line-height: 1.3; }
         .lp-sticky-cta__text strong { color: var(--text); display: block; font-size: 0.87rem; }
         .lp-sticky-cta .btn { font-size: 0.85rem; padding: 0.7rem 1.4rem; white-space: nowrap; flex-shrink: 0; }
 
-        /* Responsive */
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 960px) {
+            .lp-hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            .lp-hero__left {
+                padding: 7rem 1.5rem 2.5rem;
+                text-align: center;
+                align-items: center;
+            }
+            .lp-hero__subtitle { text-align: center; }
+            .lp-hero__cta-wrap { align-items: center; }
+            .lp-hero__proof { justify-content: center; }
+            .lp-hero__right { padding: 1.5rem 1.5rem 4rem; }
+            .lp-hero__video-wrap { width: 220px; }
+            .lp-videos__grid { grid-template-columns: 1fr; gap: 2rem; }
+            .lp-video__frame { max-width: 220px; }
+            .lp-casos-featured { grid-template-columns: 1fr; }
+            .lp-carousel__item { flex: 0 0 calc(50% - 0.5rem); }
+        }
         @media (max-width: 900px) {
             .lp-stats__inner { grid-template-columns: repeat(2, 1fr); }
             .lp-stat { padding: 0.75rem 1rem; }
@@ -524,11 +638,11 @@
             .lp-founder__avatar { margin: 0 auto; }
         }
         @media (max-width: 640px) {
-            .lp-header__phone { display: none; }
+            .lp-header__proof { display: none; }
+            .lp-carousel__item { flex: 0 0 calc(80% - 0.5rem); }
         }
         @media (max-width: 768px) {
             .lp-sticky-cta { display: flex; }
-            /* padding bottom so content not hidden under sticky bar */
             body { padding-bottom: 74px; }
         }
     </style>
@@ -552,8 +666,11 @@
             <a href="index.html">
                 <img src="assets/logos-icono.png" alt="San Martin Dent — Dentista Temuco" class="lp-header__logo">
             </a>
-            <span class="lp-header__phone">
-                <i class="fab fa-whatsapp"></i> +56 9 6727 0623
+            <span class="lp-header__proof">
+                <span class="stars">★★★★★</span>
+                <span>5.0 Google</span>
+                <span style="opacity:0.3">·</span>
+                <span>Temuco</span>
             </span>
             <a href="https://wa.me/56967270623?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta%20en%20San%20Martin%20Dent"
                class="btn btn--primary" target="_blank" rel="noopener">
@@ -562,9 +679,9 @@
         </div>
     </header>
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== HERO SPLIT ===== -->
     <section class="lp-hero">
-        <div class="lp-hero__inner">
+        <div class="lp-hero__left">
             <span class="lp-hero__eyebrow lp-fade">
                 <i class="fas fa-star"></i> Clínica Dental · Av. San Martín 0795, Temuco
             </span>
@@ -572,12 +689,12 @@
                 ¿Cuánto tiempo llevas<br><span>ocultando tu sonrisa?</span>
             </h1>
             <p class="lp-hero__subtitle lp-fade lp-fade-delay-2">
-                En San Martin Dent te ayudamos a recuperarla con diseño de sonrisa, implantes dentales y odontología integral — con el equipo que más cuida a sus pacientes en La Araucanía.
+                En San Martin Dent transformamos sonrisas con diseño personalizado — resultados reales documentados en más de 13 casos en Temuco y La Araucanía.
             </p>
             <div class="lp-hero__cta-wrap lp-fade lp-fade-delay-3">
                 <a href="https://wa.me/56967270623?text=Hola%2C%20quiero%20una%20consulta%20de%20evaluaci%C3%B3n%20en%20San%20Martin%20Dent"
                    class="btn btn--whatsapp btn--xl" target="_blank" rel="noopener">
-                    <i class="fab fa-whatsapp"></i> Quiero mi consulta de evaluación
+                    <i class="fab fa-whatsapp"></i> Quiero mi consulta sin costo
                 </a>
                 <span class="lp-cta-sub">
                     <i class="fas fa-check-circle"></i> Sin costo &nbsp;·&nbsp;
@@ -590,12 +707,23 @@
                 <span class="sep">|</span>
                 <span>5.0 Google</span>
                 <span class="sep">|</span>
-                <span>3 doctores fundadores</span>
+                <span>13 casos documentados</span>
                 <span class="sep">|</span>
                 <span>Temuco, La Araucanía</span>
             </div>
         </div>
-        <div class="lp-hero__scroll" aria-hidden="true"><i class="fas fa-chevron-down"></i></div>
+        <div class="lp-hero__right">
+            <div class="lp-hero__video-wrap lp-fade lp-fade-delay-2">
+                <div class="lp-hero__video-badge">▶ Transformación real</div>
+                <iframe
+                    src="https://www.youtube.com/embed/9Im7JreTx2c?rel=0&modestbranding=1&playsinline=1"
+                    title="Transformación de sonrisa — San Martin Dent Temuco"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
     </section>
 
     <!-- ===== STATS BAR ===== -->
@@ -606,8 +734,8 @@
                 <span class="lp-stat__label">Valoración Google</span>
             </div>
             <div class="lp-stat lp-fade lp-fade-delay-1">
-                <span class="lp-stat__num">3</span>
-                <span class="lp-stat__label">Doctores fundadores</span>
+                <span class="lp-stat__num">+2.000</span>
+                <span class="lp-stat__label">Pacientes que confiaron en nosotros desde 2022</span>
             </div>
             <div class="lp-stat lp-fade lp-fade-delay-2">
                 <span class="lp-stat__num">Lun–Sáb</span>
@@ -620,8 +748,360 @@
         </div>
     </div>
 
+    <!-- ===== VIDEOS TRANSFORMACIÓN ===== -->
+    <section class="lp-section lp-section--mid">
+        <div class="lp-inner">
+            <span class="lp-label lp-fade">Mira los resultados</span>
+            <h2 class="section__title lp-fade lp-fade-delay-1">Videos de <span>transformaciones reales</span></h2>
+            <p class="section__subtitle lp-fade lp-fade-delay-2">Pacientes de Temuco que se animaron a dar el paso — estos son sus resultados</p>
+
+            <div class="lp-videos__grid">
+                <div class="lp-video__card lp-fade">
+                    <div class="lp-video__frame">
+                        <iframe
+                            src="https://www.youtube.com/embed/9Im7JreTx2c?rel=0&modestbranding=1&playsinline=1"
+                            title="Transformación de sonrisa 1 — San Martin Dent"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="lp-video__label">
+                        <div class="lp-video__num">1</div>
+                        <h3>Transformación completa</h3>
+                        <p>Diseño de sonrisa personalizado con resultados visibles desde la primera sesión</p>
+                    </div>
+                </div>
+                <div class="lp-video__card lp-fade lp-fade-delay-2">
+                    <div class="lp-video__frame">
+                        <iframe
+                            src="https://www.youtube.com/embed/I-lm-X4M1Kw?rel=0&modestbranding=1&playsinline=1"
+                            title="Transformación de sonrisa 2 — San Martin Dent"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="lp-video__label">
+                        <div class="lp-video__num">2</div>
+                        <h3>Antes y después</h3>
+                        <p>El cambio que logró nuestra paciente con un plan de diseño de sonrisa en Temuco</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CASOS DE ÉXITO ===== -->
+    <section class="lp-section lp-section--dark" id="casos">
+        <div class="lp-inner">
+            <span class="lp-label lp-fade">Resultados reales</span>
+            <h2 class="section__title lp-fade lp-fade-delay-1">Casos de éxito en <span>San Martin Dent</span></h2>
+            <p class="lp-casos__intro lp-fade lp-fade-delay-2">
+                Arrastra el slider para ver la transformación. 13 casos documentados de pacientes reales de Temuco y La Araucanía.
+            </p>
+
+            <!-- Casos destacados: 04, 06, 08, 13 -->
+            <div class="lp-casos-featured">
+
+                <div class="lp-ba-card lp-fade">
+                    <div class="lp-ba-card__badge">
+                        <i class="fas fa-star"></i> Caso destacado · Diseño de sonrisa
+                    </div>
+                    <div class="ba-slider" data-slider>
+                        <img src="assets/casos/caso-04-antes.jpg" alt="Antes — caso 04">
+                        <div class="ba-after">
+                            <img src="assets/casos/caso-04-despues.jpg" alt="Después — caso 04">
+                        </div>
+                        <div class="ba-handle">
+                            <div class="ba-handle-arrows"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></div>
+                        </div>
+                        <div class="ba-labels">
+                            <span class="ba-label-antes">ANTES</span>
+                            <span class="ba-label-despues">DESPUÉS</span>
+                        </div>
+                        <div class="ba-drag-hint">← Arrastra →</div>
+                    </div>
+                </div>
+
+                <div class="lp-ba-card lp-fade lp-fade-delay-1">
+                    <div class="lp-ba-card__badge">
+                        <i class="fas fa-star"></i> Caso destacado · Diseño de sonrisa
+                    </div>
+                    <div class="ba-slider" data-slider>
+                        <img src="assets/casos/caso-06-antes.jpeg" alt="Antes — caso 06">
+                        <div class="ba-after">
+                            <img src="assets/casos/caso-06-despues.jpeg" alt="Después — caso 06">
+                        </div>
+                        <div class="ba-handle">
+                            <div class="ba-handle-arrows"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></div>
+                        </div>
+                        <div class="ba-labels">
+                            <span class="ba-label-antes">ANTES</span>
+                            <span class="ba-label-despues">DESPUÉS</span>
+                        </div>
+                        <div class="ba-drag-hint">← Arrastra →</div>
+                    </div>
+                </div>
+
+                <div class="lp-ba-card lp-fade">
+                    <div class="lp-ba-card__badge">
+                        <i class="fas fa-star"></i> Caso destacado · Diseño de sonrisa
+                    </div>
+                    <div class="ba-slider" data-slider>
+                        <img src="assets/casos/caso-08-antes.jpeg" alt="Antes — caso 08">
+                        <div class="ba-after">
+                            <img src="assets/casos/caso-08-despues.jpeg" alt="Después — caso 08">
+                        </div>
+                        <div class="ba-handle">
+                            <div class="ba-handle-arrows"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></div>
+                        </div>
+                        <div class="ba-labels">
+                            <span class="ba-label-antes">ANTES</span>
+                            <span class="ba-label-despues">DESPUÉS</span>
+                        </div>
+                        <div class="ba-drag-hint">← Arrastra →</div>
+                    </div>
+                </div>
+
+                <div class="lp-ba-card lp-fade lp-fade-delay-1">
+                    <div class="lp-ba-card__badge">
+                        <i class="fas fa-star"></i> Caso destacado · Diseño de sonrisa
+                    </div>
+                    <div class="ba-slider" data-slider>
+                        <img src="assets/casos/caso-13-antes.jpeg" alt="Antes — caso 13">
+                        <div class="ba-after">
+                            <img src="assets/casos/caso-13-despues.jpeg" alt="Después — caso 13">
+                        </div>
+                        <div class="ba-handle">
+                            <div class="ba-handle-arrows"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></div>
+                        </div>
+                        <div class="ba-labels">
+                            <span class="ba-label-antes">ANTES</span>
+                            <span class="ba-label-despues">DESPUÉS</span>
+                        </div>
+                        <div class="ba-drag-hint">← Arrastra →</div>
+                    </div>
+                </div>
+
+            </div><!-- /lp-casos-featured -->
+
+            <!-- Carrusel todos los casos -->
+            <div class="lp-carousel-wrap lp-fade">
+                <div class="lp-carousel-header">
+                    <h3><i class="fas fa-images" style="color:var(--accent);margin-right:0.4rem"></i> Los 13 casos — desliza para ver todos</h3>
+                    <div class="lp-carousel-nav">
+                        <button class="lp-carousel-btn" id="carouselPrev" aria-label="Anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="lp-carousel-btn" id="carouselNext" aria-label="Siguiente">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="lp-carousel" id="casosCarousel">
+
+                    <div class="lp-carousel__item">
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-01-antes.jpg" alt="Caso 1 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-01-despues.jpg" alt="Caso 1 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 01</div>
+                    </div>
+
+                    <div class="lp-carousel__item">
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-02-antes.jpeg" alt="Caso 2 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-02-despues.jpeg" alt="Caso 2 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 02</div>
+                    </div>
+
+                    <div class="lp-carousel__item">
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-03-antes.jpeg" alt="Caso 3 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-03-despues.jpeg" alt="Caso 3 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 03</div>
+                    </div>
+
+                    <div class="lp-carousel__item lp-carousel__item--featured">
+                        <span class="lp-carousel__featured-badge">★ Destacado</span>
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-04-antes.jpg" alt="Caso 4 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-04-despues.jpg" alt="Caso 4 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 04</div>
+                    </div>
+
+                    <div class="lp-carousel__item">
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-05-antes.jpeg" alt="Caso 5 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-05-despues.jpeg" alt="Caso 5 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 05</div>
+                    </div>
+
+                    <div class="lp-carousel__item lp-carousel__item--featured">
+                        <span class="lp-carousel__featured-badge">★ Destacado</span>
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-06-antes.jpeg" alt="Caso 6 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-06-despues.jpeg" alt="Caso 6 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 06</div>
+                    </div>
+
+                    <div class="lp-carousel__item">
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-07-antes.jpeg" alt="Caso 7 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-07-despues.jpeg" alt="Caso 7 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 07</div>
+                    </div>
+
+                    <div class="lp-carousel__item lp-carousel__item--featured">
+                        <span class="lp-carousel__featured-badge">★ Destacado</span>
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-08-antes.jpeg" alt="Caso 8 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-08-despues.jpeg" alt="Caso 8 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 08</div>
+                    </div>
+
+                    <div class="lp-carousel__item">
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-09-antes.jpg" alt="Caso 9 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-09-despues.jpg" alt="Caso 9 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 09</div>
+                    </div>
+
+                    <div class="lp-carousel__item">
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-10-antes.jpg" alt="Caso 10 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-10-despues.jpg" alt="Caso 10 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 10</div>
+                    </div>
+
+                    <div class="lp-carousel__item">
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-11-antes.jpeg" alt="Caso 11 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-11-despues.jpeg" alt="Caso 11 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 11</div>
+                    </div>
+
+                    <div class="lp-carousel__item">
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-12-antes.jpeg" alt="Caso 12 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-12-despues.jpeg" alt="Caso 12 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 12</div>
+                    </div>
+
+                    <div class="lp-carousel__item lp-carousel__item--featured">
+                        <span class="lp-carousel__featured-badge">★ Destacado</span>
+                        <div class="lp-carousel__pair">
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-13-antes.jpeg" alt="Caso 13 antes" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--antes">ANTES</span>
+                            </div>
+                            <div class="lp-carousel__pair-img">
+                                <img src="assets/casos/caso-13-despues.jpeg" alt="Caso 13 después" loading="lazy">
+                                <span class="lp-carousel__pair-label lp-carousel__pair-label--despues">DESPUÉS</span>
+                            </div>
+                        </div>
+                        <div class="lp-carousel__case-num">Caso 13</div>
+                    </div>
+
+                </div><!-- /lp-carousel -->
+            </div><!-- /lp-carousel-wrap -->
+
+            <div style="text-align:center;margin-top:2.75rem;" class="lp-fade">
+                <a href="https://wa.me/56967270623?text=Hola%2C%20vi%20los%20casos%20y%20quiero%20una%20consulta%20de%20evaluaci%C3%B3n"
+                   class="btn btn--whatsapp" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> Quiero un resultado así — agendar ahora
+                </a>
+                <p style="margin-top:0.6rem;font-family:var(--font-title);font-size:0.76rem;color:var(--text-muted);">
+                    <i class="fas fa-check-circle" style="color:var(--accent)"></i> Evaluación sin costo &nbsp;·&nbsp; Sin compromiso
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== PROBLEMA ===== -->
-    <section class="lp-section lp-section--dark">
+    <section class="lp-section lp-section--mid">
         <div class="lp-inner lp-inner--narrow">
             <span class="lp-label lp-fade">¿Te identificas?</span>
             <h2 class="lp-problem__title lp-fade lp-fade-delay-1">Señales de que <span>es momento de actuar</span></h2>
@@ -643,17 +1123,14 @@
                        class="btn btn--primary" target="_blank" rel="noopener">
                         <i class="fab fa-whatsapp"></i> Quiero conocer mis opciones
                     </a>
-                    <span class="lp-cta-sub">
-                        <i class="fas fa-check-circle"></i> Sin costo &nbsp;·&nbsp;
-                        <i class="fas fa-check-circle"></i> Sin compromiso
-                    </span>
+                    <span class="lp-cta-sub"><i class="fas fa-check-circle"></i> Sin costo &nbsp;·&nbsp; <i class="fas fa-check-circle"></i> Sin compromiso</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== CÓMO FUNCIONA ===== -->
-    <section class="lp-section lp-section--mid">
+    <section class="lp-section lp-section--dark">
         <div class="lp-inner lp-inner--narrow">
             <span class="lp-label lp-fade">3 pasos simples</span>
             <h2 class="section__title lp-fade lp-fade-delay-1">Así de fácil es <span>empezar</span></h2>
@@ -683,13 +1160,12 @@
     </section>
 
     <!-- ===== SERVICIOS ===== -->
-    <section class="lp-section lp-section--dark">
+    <section class="lp-section lp-section--mid">
         <div class="lp-inner">
             <span class="lp-label lp-fade">Lo que hacemos</span>
             <h2 class="section__title lp-fade lp-fade-delay-1">Tratamientos dentales <span>en Temuco</span></h2>
             <p class="section__subtitle lp-fade lp-fade-delay-2">Desde una limpieza de rutina hasta una transformación completa de tu sonrisa</p>
 
-            <!-- Diseño de sonrisa: servicio estrella -->
             <div class="lp-services__featured lp-fade">
                 <span class="lp-services__ribbon">Servicio estrella</span>
                 <div class="lp-services__featured-icon">
@@ -714,7 +1190,6 @@
                 </div>
             </div>
 
-            <!-- Otros servicios -->
             <div class="lp-services__grid">
                 <div class="lp-service__card lp-fade">
                     <div class="lp-service__icon">
@@ -751,7 +1226,7 @@
     </section>
 
     <!-- ===== EQUIPO ===== -->
-    <section class="lp-section lp-section--mid">
+    <section class="lp-section lp-section--dark">
         <div class="lp-inner">
             <span class="lp-label lp-fade">Quiénes te atienden</span>
             <h2 class="section__title lp-fade lp-fade-delay-1">Los dentistas <span>fundadores de San Martin Dent</span></h2>
@@ -781,7 +1256,6 @@
                 </div>
             </div>
 
-            <!-- Nota del fundador -->
             <div class="lp-founder lp-fade">
                 <div class="lp-founder__avatar">
                     <img src="assets/dr-san-martin.png" alt="Dr. Ignacio San Martín">
@@ -799,7 +1273,7 @@
     </section>
 
     <!-- ===== TESTIMONIOS ===== -->
-    <section class="lp-section lp-section--deep">
+    <section class="lp-section lp-section--mid">
         <div class="lp-inner">
             <span class="lp-label lp-fade">Lo que dicen nuestros pacientes</span>
             <h2 class="section__title lp-fade lp-fade-delay-1">Opiniones reales <span>de Google</span></h2>
@@ -838,7 +1312,7 @@
     </section>
 
     <!-- ===== FAQ ===== -->
-    <section class="lp-section lp-section--mid">
+    <section class="lp-section lp-section--dark">
         <div class="lp-inner lp-inner--narrow">
             <span class="lp-label lp-fade">Resolvemos tus dudas</span>
             <h2 class="section__title lp-fade lp-fade-delay-1">Preguntas <span>frecuentes</span></h2>
@@ -970,10 +1444,7 @@
         // Fade-in con IntersectionObserver
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    observer.unobserve(e.target);
-                }
+                if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.lp-fade').forEach(el => observer.observe(el));
@@ -989,19 +1460,57 @@
             });
         });
 
-        // Sticky CTA móvil: aparece después del hero
+        // Sticky CTA móvil
         const hero = document.querySelector('.lp-hero');
         const stickyCta = document.getElementById('lpStickyCta');
         const stickyObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => {
-                if (!e.isIntersecting) {
-                    stickyCta.classList.add('visible');
-                } else {
-                    stickyCta.classList.remove('visible');
-                }
+                stickyCta.classList.toggle('visible', !e.isIntersecting);
             });
         }, { threshold: 0.1 });
         if (hero && stickyCta) stickyObserver.observe(hero);
+
+        // ===== BEFORE/AFTER SLIDER =====
+        document.querySelectorAll('[data-slider]').forEach(slider => {
+            const after = slider.querySelector('.ba-after');
+            const handle = slider.querySelector('.ba-handle');
+            let dragging = false;
+
+            const setPos = (clientX) => {
+                const rect = slider.getBoundingClientRect();
+                const pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+                after.style.clipPath = `inset(0 0 0 ${((1 - pos) * 100).toFixed(1)}%)`;
+                handle.style.left = `${(pos * 100).toFixed(1)}%`;
+                slider.classList.add('interacted');
+            };
+
+            // Mouse
+            handle.addEventListener('mousedown', (e) => { dragging = true; e.preventDefault(); });
+            document.addEventListener('mouseup', () => dragging = false);
+            document.addEventListener('mousemove', (e) => { if (dragging) setPos(e.clientX); });
+
+            // Touch
+            handle.addEventListener('touchstart', (e) => { dragging = true; e.preventDefault(); }, { passive: false });
+            document.addEventListener('touchend', () => dragging = false);
+            document.addEventListener('touchmove', (e) => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+
+            // Click anywhere on slider
+            slider.addEventListener('click', (e) => setPos(e.clientX));
+        });
+
+        // ===== CAROUSEL =====
+        const carousel = document.getElementById('casosCarousel');
+        const prevBtn = document.getElementById('carouselPrev');
+        const nextBtn = document.getElementById('carouselNext');
+
+        if (carousel && prevBtn && nextBtn) {
+            const scrollAmount = () => {
+                const item = carousel.querySelector('.lp-carousel__item');
+                return item ? item.offsetWidth + 16 : 200;
+            };
+            prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -scrollAmount() * 3, behavior: 'smooth' }));
+            nextBtn.addEventListener('click', () => carousel.scrollBy({ left: scrollAmount() * 3, behavior: 'smooth' }));
+        }
     </script>
 </body>
 </html>

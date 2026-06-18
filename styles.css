@@ -221,7 +221,19 @@ ul { list-style: none; }
 .service__card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 2rem; flex: 1; }
 
 /* ===== ABOUT ===== */
-.about { padding: 6rem 0; background: var(--bg-light); }
+.about {
+    padding: 6rem 0;
+    background-image: url('assets/box2.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.about::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(10,22,38,0.90) 0%, rgba(15,29,47,0.85) 100%);
+    z-index: 0;
+}
+.about .container { position: relative; z-index: 1; }
 .about__content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 .about__text .section__title { text-align: left; }
 .about__text .section__title::after { margin: 0.75rem 0 0; }
