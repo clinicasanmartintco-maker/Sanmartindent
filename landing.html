@@ -637,6 +637,41 @@
             .lp-founder { grid-template-columns: 1fr; text-align: center; }
             .lp-founder__avatar { margin: 0 auto; }
         }
+        /* Shorts strip */
+        .lp-shorts-strip {
+            background: linear-gradient(180deg, #081220 0%, var(--bg-card) 100%);
+            padding: 2rem 1.5rem 2.5rem;
+            border-bottom: 1px solid rgba(241,159,5,0.12);
+        }
+        .lp-shorts-strip__inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+        }
+        .lp-shorts-strip__label {
+            font-family: var(--font-title); font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--accent); display: flex; align-items: center; gap: 0.5rem;
+        }
+        .lp-shorts-strip__videos {
+            display: flex; gap: 2rem; justify-content: center; align-items: flex-start;
+        }
+        .lp-short-thumb {
+            position: relative;
+            width: 200px;
+            aspect-ratio: 9/16;
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 0 40px rgba(241,159,5,0.18), 0 16px 48px rgba(0,0,0,0.5);
+            border: 2px solid rgba(241,159,5,0.25);
+            flex-shrink: 0;
+        }
+        .lp-short-thumb iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+        @media (max-width: 640px) {
+            .lp-shorts-strip__videos { gap: 1rem; }
+            .lp-short-thumb { width: 145px; }
+        }
+
         @media (max-width: 640px) {
             .lp-header__proof { display: none; }
             .lp-carousel__item { flex: 0 0 calc(80% - 0.5rem); }
@@ -725,6 +760,33 @@
             </div>
         </div>
     </section>
+
+    <!-- ===== SHORTS STRIP ===== -->
+    <div class="lp-shorts-strip">
+        <div class="lp-shorts-strip__inner">
+            <div class="lp-shorts-strip__label">
+                <i class="fas fa-play-circle"></i> Transformaciones reales — mira el resultado
+            </div>
+            <div class="lp-shorts-strip__videos">
+                <div class="lp-short-thumb">
+                    <iframe
+                        src="https://www.youtube.com/embed/9Im7JreTx2c?rel=0&modestbranding=1&playsinline=1"
+                        title="Transformación 1 — San Martin Dent"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy">
+                    </iframe>
+                </div>
+                <div class="lp-short-thumb">
+                    <iframe
+                        src="https://www.youtube.com/embed/I-lm-X4M1Kw?rel=0&modestbranding=1&playsinline=1"
+                        title="Transformación 2 — San Martin Dent"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ===== STATS BAR ===== -->
     <div class="lp-stats">
