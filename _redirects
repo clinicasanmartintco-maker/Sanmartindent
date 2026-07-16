@@ -1,1 +1,4 @@
-/agenda /landing.html 200
+# Redirects para URLs duplicadas — evitar contenido duplicado en Google
+/blog/implantes-dentales-temuco.html /blog/implantes-dentales-temuco 301
+/blog/implante-dental-financiamiento-temuco.html /blog/implante-dental-financiamiento-temuco 301
+/blog/ortodoncia-brackets-temuco.html /blog/ortodoncia-brackets-temuco 301
